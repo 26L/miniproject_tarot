@@ -1,0 +1,1562 @@
+[
+  {
+    "card_id": 1,
+    "name_en": "The Fool",
+    "name_kr": "광대",
+    "image_url": "/static/cards/tarot_the_fool.png",
+    "suit": "Major",
+    "number": 0,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "광대 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 2,
+    "name_en": "The Magician",
+    "name_kr": "마법사",
+    "image_url": "/static/cards/tarot_the_magician.png",
+    "suit": "Major",
+    "number": 1,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "마법사 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 3,
+    "name_en": "The High Priestess",
+    "name_kr": "고위 여사제",
+    "image_url": "/static/cards/tarot_the_high_priestess.png",
+    "suit": "Major",
+    "number": 2,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "고위 여사제 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 4,
+    "name_en": "The Empress",
+    "name_kr": "여황제",
+    "image_url": "/static/cards/tarot_the_empress.png",
+    "suit": "Major",
+    "number": 3,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "여황제 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 5,
+    "name_en": "The Emperor",
+    "name_kr": "황제",
+    "image_url": "/static/cards/tarot_the_emperor.png",
+    "suit": "Major",
+    "number": 4,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "황제 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 6,
+    "name_en": "The Hierophant",
+    "name_kr": "교황",
+    "image_url": "/static/cards/tarot_the_hierophant.png",
+    "suit": "Major",
+    "number": 5,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "교황 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 7,
+    "name_en": "The Lovers",
+    "name_kr": "연인",
+    "image_url": "/static/cards/tarot_the_lovers.png",
+    "suit": "Major",
+    "number": 6,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "연인 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 8,
+    "name_en": "The Chariot",
+    "name_kr": "전차",
+    "image_url": "/static/cards/tarot_the_chariot.png",
+    "suit": "Major",
+    "number": 7,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "전차 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 9,
+    "name_en": "Strength",
+    "name_kr": "힘",
+    "image_url": "/static/cards/tarot_strength.png",
+    "suit": "Major",
+    "number": 8,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "힘 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 10,
+    "name_en": "The Hermit",
+    "name_kr": "은둔자",
+    "image_url": "/static/cards/tarot_the_hermit.png",
+    "suit": "Major",
+    "number": 9,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "은둔자 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 11,
+    "name_en": "Wheel of Fortune",
+    "name_kr": "운명의 수레바퀴",
+    "image_url": "/static/cards/tarot_wheel_of_fortune.png",
+    "suit": "Major",
+    "number": 10,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "운명의 수레바퀴 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 12,
+    "name_en": "Justice",
+    "name_kr": "정의",
+    "image_url": "/static/cards/tarot_justice.png",
+    "suit": "Major",
+    "number": 11,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "정의 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 13,
+    "name_en": "The Hanged Man",
+    "name_kr": "매달린 남자",
+    "image_url": "/static/cards/tarot_the_hanged_man.png",
+    "suit": "Major",
+    "number": 12,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "매달린 남자 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 14,
+    "name_en": "Death",
+    "name_kr": "죽음",
+    "image_url": "/static/cards/tarot_death.png",
+    "suit": "Major",
+    "number": 13,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "죽음 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 15,
+    "name_en": "Temperance",
+    "name_kr": "절제",
+    "image_url": "/static/cards/tarot_temperance.png",
+    "suit": "Major",
+    "number": 14,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "절제 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 16,
+    "name_en": "The Devil",
+    "name_kr": "악마",
+    "image_url": "/static/cards/tarot_the_devil.png",
+    "suit": "Major",
+    "number": 15,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "악마 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 17,
+    "name_en": "The Tower",
+    "name_kr": "탑",
+    "image_url": "/static/cards/tarot_the_tower.png",
+    "suit": "Major",
+    "number": 16,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "탑 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 18,
+    "name_en": "The Star",
+    "name_kr": "별",
+    "image_url": "/static/cards/tarot_the_star.png",
+    "suit": "Major",
+    "number": 17,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "별 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 19,
+    "name_en": "The Moon",
+    "name_kr": "달",
+    "image_url": "/static/cards/tarot_the_moon.png",
+    "suit": "Major",
+    "number": 18,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "달 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 20,
+    "name_en": "The Sun",
+    "name_kr": "태양",
+    "image_url": "/static/cards/tarot_the_sun.png",
+    "suit": "Major",
+    "number": 19,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "태양 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 21,
+    "name_en": "Judgement",
+    "name_kr": "심판",
+    "image_url": "/static/cards/tarot_judgement.png",
+    "suit": "Major",
+    "number": 20,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "심판 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 22,
+    "name_en": "The World",
+    "name_kr": "세계",
+    "image_url": "/static/cards/tarot_the_world.png",
+    "suit": "Major",
+    "number": 21,
+    "element": "Varies",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "세계 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 23,
+    "name_en": "Ace of Wands",
+    "name_kr": "완드 에이스",
+    "image_url": "/static/cards/tarot_ace_of_wands.png",
+    "suit": "Wands",
+    "number": 1,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 에이스 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 24,
+    "name_en": "Two of Wands",
+    "name_kr": "완드 2",
+    "image_url": "/static/cards/tarot_two_of_wands.png",
+    "suit": "Wands",
+    "number": 2,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 2 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 25,
+    "name_en": "Three of Wands",
+    "name_kr": "완드 3",
+    "image_url": "/static/cards/tarot_three_of_wands.png",
+    "suit": "Wands",
+    "number": 3,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 3 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 26,
+    "name_en": "Four of Wands",
+    "name_kr": "완드 4",
+    "image_url": "/static/cards/tarot_four_of_wands.png",
+    "suit": "Wands",
+    "number": 4,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 4 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 27,
+    "name_en": "Five of Wands",
+    "name_kr": "완드 5",
+    "image_url": "/static/cards/tarot_five_of_wands.png",
+    "suit": "Wands",
+    "number": 5,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 5 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 28,
+    "name_en": "Six of Wands",
+    "name_kr": "완드 6",
+    "image_url": "/static/cards/tarot_six_of_wands.png",
+    "suit": "Wands",
+    "number": 6,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 6 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 29,
+    "name_en": "Seven of Wands",
+    "name_kr": "완드 7",
+    "image_url": "/static/cards/tarot_seven_of_wands.png",
+    "suit": "Wands",
+    "number": 7,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 7 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 30,
+    "name_en": "Eight of Wands",
+    "name_kr": "완드 8",
+    "image_url": "/static/cards/tarot_eight_of_wands.png",
+    "suit": "Wands",
+    "number": 8,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 8 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 31,
+    "name_en": "Nine of Wands",
+    "name_kr": "완드 9",
+    "image_url": "/static/cards/tarot_nine_of_wands.png",
+    "suit": "Wands",
+    "number": 9,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 9 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 32,
+    "name_en": "Ten of Wands",
+    "name_kr": "완드 10",
+    "image_url": "/static/cards/tarot_ten_of_wands.png",
+    "suit": "Wands",
+    "number": 10,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 10 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 33,
+    "name_en": "Page of Wands",
+    "name_kr": "완드 페이지",
+    "image_url": "/static/cards/tarot_page_of_wands.png",
+    "suit": "Wands",
+    "number": 11,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 페이지 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 34,
+    "name_en": "Knight of Wands",
+    "name_kr": "완드 기사",
+    "image_url": "/static/cards/tarot_knight_of_wands.png",
+    "suit": "Wands",
+    "number": 12,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 기사 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 35,
+    "name_en": "Queen of Wands",
+    "name_kr": "완드 퀸",
+    "image_url": "/static/cards/tarot_queen_of_wands.png",
+    "suit": "Wands",
+    "number": 13,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 퀸 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 36,
+    "name_en": "King of Wands",
+    "name_kr": "완드 킹",
+    "image_url": "/static/cards/tarot_king_of_wands.png",
+    "suit": "Wands",
+    "number": 14,
+    "element": "Wands",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "완드 킹 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 37,
+    "name_en": "Ace of Cups",
+    "name_kr": "컵 에이스",
+    "image_url": "/static/cards/tarot_ace_of_cups.png",
+    "suit": "Cups",
+    "number": 1,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 에이스 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 38,
+    "name_en": "Two of Cups",
+    "name_kr": "컵 2",
+    "image_url": "/static/cards/tarot_two_of_cups.png",
+    "suit": "Cups",
+    "number": 2,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 2 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 39,
+    "name_en": "Three of Cups",
+    "name_kr": "컵 3",
+    "image_url": "/static/cards/tarot_three_of_cups.png",
+    "suit": "Cups",
+    "number": 3,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 3 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 40,
+    "name_en": "Four of Cups",
+    "name_kr": "컵 4",
+    "image_url": "/static/cards/tarot_four_of_cups.png",
+    "suit": "Cups",
+    "number": 4,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 4 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 41,
+    "name_en": "Five of Cups",
+    "name_kr": "컵 5",
+    "image_url": "/static/cards/tarot_five_of_cups.png",
+    "suit": "Cups",
+    "number": 5,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 5 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 42,
+    "name_en": "Six of Cups",
+    "name_kr": "컵 6",
+    "image_url": "/static/cards/tarot_six_of_cups.png",
+    "suit": "Cups",
+    "number": 6,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 6 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 43,
+    "name_en": "Seven of Cups",
+    "name_kr": "컵 7",
+    "image_url": "/static/cards/tarot_seven_of_cups.png",
+    "suit": "Cups",
+    "number": 7,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 7 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 44,
+    "name_en": "Eight of Cups",
+    "name_kr": "컵 8",
+    "image_url": "/static/cards/tarot_eight_of_cups.png",
+    "suit": "Cups",
+    "number": 8,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 8 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 45,
+    "name_en": "Nine of Cups",
+    "name_kr": "컵 9",
+    "image_url": "/static/cards/tarot_nine_of_cups.png",
+    "suit": "Cups",
+    "number": 9,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 9 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 46,
+    "name_en": "Ten of Cups",
+    "name_kr": "컵 10",
+    "image_url": "/static/cards/tarot_ten_of_cups.png",
+    "suit": "Cups",
+    "number": 10,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 10 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 47,
+    "name_en": "Page of Cups",
+    "name_kr": "컵 페이지",
+    "image_url": "/static/cards/tarot_page_of_cups.png",
+    "suit": "Cups",
+    "number": 11,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 페이지 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 48,
+    "name_en": "Knight of Cups",
+    "name_kr": "컵 기사",
+    "image_url": "/static/cards/tarot_knight_of_cups.png",
+    "suit": "Cups",
+    "number": 12,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 기사 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 49,
+    "name_en": "Queen of Cups",
+    "name_kr": "컵 퀸",
+    "image_url": "/static/cards/tarot_queen_of_cups.png",
+    "suit": "Cups",
+    "number": 13,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 퀸 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 50,
+    "name_en": "King of Cups",
+    "name_kr": "컵 킹",
+    "image_url": "/static/cards/tarot_king_of_cups.png",
+    "suit": "Cups",
+    "number": 14,
+    "element": "Cups",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "컵 킹 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 51,
+    "name_en": "Ace of Swords",
+    "name_kr": "검 에이스",
+    "image_url": "/static/cards/tarot_ace_of_swords.png",
+    "suit": "Swords",
+    "number": 1,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 에이스 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 52,
+    "name_en": "Two of Swords",
+    "name_kr": "검 2",
+    "image_url": "/static/cards/tarot_two_of_swords.png",
+    "suit": "Swords",
+    "number": 2,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 2 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 53,
+    "name_en": "Three of Swords",
+    "name_kr": "검 3",
+    "image_url": "/static/cards/tarot_three_of_swords.png",
+    "suit": "Swords",
+    "number": 3,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 3 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 54,
+    "name_en": "Four of Swords",
+    "name_kr": "검 4",
+    "image_url": "/static/cards/tarot_four_of_swords.png",
+    "suit": "Swords",
+    "number": 4,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 4 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 55,
+    "name_en": "Five of Swords",
+    "name_kr": "검 5",
+    "image_url": "/static/cards/tarot_five_of_swords.png",
+    "suit": "Swords",
+    "number": 5,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 5 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 56,
+    "name_en": "Six of Swords",
+    "name_kr": "검 6",
+    "image_url": "/static/cards/tarot_six_of_swords.png",
+    "suit": "Swords",
+    "number": 6,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 6 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 57,
+    "name_en": "Seven of Swords",
+    "name_kr": "검 7",
+    "image_url": "/static/cards/tarot_seven_of_swords.png",
+    "suit": "Swords",
+    "number": 7,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 7 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 58,
+    "name_en": "Eight of Swords",
+    "name_kr": "검 8",
+    "image_url": "/static/cards/tarot_eight_of_swords.png",
+    "suit": "Swords",
+    "number": 8,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 8 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 59,
+    "name_en": "Nine of Swords",
+    "name_kr": "검 9",
+    "image_url": "/static/cards/tarot_nine_of_swords.png",
+    "suit": "Swords",
+    "number": 9,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 9 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 60,
+    "name_en": "Ten of Swords",
+    "name_kr": "검 10",
+    "image_url": "/static/cards/tarot_ten_of_swords.png",
+    "suit": "Swords",
+    "number": 10,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 10 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 61,
+    "name_en": "Page of Swords",
+    "name_kr": "검 페이지",
+    "image_url": "/static/cards/tarot_page_of_swords.png",
+    "suit": "Swords",
+    "number": 11,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 페이지 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 62,
+    "name_en": "Knight of Swords",
+    "name_kr": "검 기사",
+    "image_url": "/static/cards/tarot_knight_of_swords.png",
+    "suit": "Swords",
+    "number": 12,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 기사 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 63,
+    "name_en": "Queen of Swords",
+    "name_kr": "검 퀸",
+    "image_url": "/static/cards/tarot_queen_of_swords.png",
+    "suit": "Swords",
+    "number": 13,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 퀸 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 64,
+    "name_en": "King of Swords",
+    "name_kr": "검 킹",
+    "image_url": "/static/cards/tarot_king_of_swords.png",
+    "suit": "Swords",
+    "number": 14,
+    "element": "Swords",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "검 킹 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 65,
+    "name_en": "Ace of Pentacles",
+    "name_kr": "펜타클 에이스",
+    "image_url": "/static/cards/tarot_ace_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 1,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 에이스 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 66,
+    "name_en": "Two of Pentacles",
+    "name_kr": "펜타클 2",
+    "image_url": "/static/cards/tarot_two_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 2,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 2 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 67,
+    "name_en": "Three of Pentacles",
+    "name_kr": "펜타클 3",
+    "image_url": "/static/cards/tarot_three_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 3,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 3 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 68,
+    "name_en": "Four of Pentacles",
+    "name_kr": "펜타클 4",
+    "image_url": "/static/cards/tarot_four_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 4,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 4 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 69,
+    "name_en": "Five of Pentacles",
+    "name_kr": "펜타클 5",
+    "image_url": "/static/cards/tarot_five_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 5,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 5 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 70,
+    "name_en": "Six of Pentacles",
+    "name_kr": "펜타클 6",
+    "image_url": "/static/cards/tarot_six_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 6,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 6 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 71,
+    "name_en": "Seven of Pentacles",
+    "name_kr": "펜타클 7",
+    "image_url": "/static/cards/tarot_seven_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 7,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 7 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 72,
+    "name_en": "Eight of Pentacles",
+    "name_kr": "펜타클 8",
+    "image_url": "/static/cards/tarot_eight_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 8,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 8 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 73,
+    "name_en": "Nine of Pentacles",
+    "name_kr": "펜타클 9",
+    "image_url": "/static/cards/tarot_nine_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 9,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 9 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 74,
+    "name_en": "Ten of Pentacles",
+    "name_kr": "펜타클 10",
+    "image_url": "/static/cards/tarot_ten_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 10,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 10 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 75,
+    "name_en": "Page of Pentacles",
+    "name_kr": "펜타클 페이지",
+    "image_url": "/static/cards/tarot_page_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 11,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 페이지 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 76,
+    "name_en": "Knight of Pentacles",
+    "name_kr": "펜타클 기사",
+    "image_url": "/static/cards/tarot_knight_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 12,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 기사 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 77,
+    "name_en": "Queen of Pentacles",
+    "name_kr": "펜타클 퀸",
+    "image_url": "/static/cards/tarot_queen_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 13,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 퀸 카드에 대한 기본 설명입니다."
+  },
+  {
+    "card_id": 78,
+    "name_en": "King of Pentacles",
+    "name_kr": "펜타클 킹",
+    "image_url": "/static/cards/tarot_king_of_pentacles.png",
+    "suit": "Pentacles",
+    "number": 14,
+    "element": "Pentacles",
+    "keywords": {
+      "upright": [
+        "키워드1",
+        "키워드2"
+      ],
+      "reversed": [
+        "역방향1",
+        "역방향2"
+      ]
+    },
+    "description": "펜타클 킹 카드에 대한 기본 설명입니다."
+  }
+]

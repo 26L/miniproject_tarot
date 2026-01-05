@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+          body {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2rem 80px;
+            position: relative;
+          }
+          @media screen and (max-width: 500px) {
+            body {
+              padding: 1rem 16px;
+            }
+          }
+        </style>
+      <script type='text/javascript' src='https://www.genspark.ai/e5ytL1qWQNuUsPYNqP7vu3_vM4eY7xa0oLaF-mUb4RC9KX06BTLtqWpHxTVKT31pXeHHqLEksBTxH0yk1gS2peURHksYHhroDrxkz_temH-NNUqMDUOyTy60shgmONRF-a-cTTrTp8l6wy2OiJWnWrKZC9WTbcBFYaFyS-QaZ7f9NxA1lWyt8f7NWJXJtk_vKPE41nVT8xJY-zRp0qlY9q_UD2-rvh-B9dR1XFD05TOZcRKAD7DSak_W6kpJSCtXeB2Lt0a0z14ALBf6WRFSsFrv_k_fDtJv_4Hasm-Rc1lzoMs-c6TlNuOpnXLd4x4ixGLTb2rMPruxIc0lfrTb3ryGBsyG5nI3g_eTMIEyZfsrUVOTsibZo89q2L539K445_18o3YzyAaI5Fyre6-tvF-LhulKK8B26RLB8goJcva4COD3wTo5AloGpMC0hsLlKNCMW1u4LbbBxXzojnKYJte3PmhpKQwsaBPj'></script></head>
+      <body>
+        <h1>🔮 AI 타로 리딩 플랫폼 시스템 설계 보고서</h1>
+<h2>Project: PyTarot</h2>
+<hr />
+<h2>📋 1. 프로젝트 개요 (Project Overview)</h2>
+<h3>1.1 프로젝트 목표 (Project Goals)</h3>
+<p>Python 기반 AI 타로 리딩 시스템(Web/App) 개발을 위한 시스템 설계로, 최신 Python 트렌드를 반영하여 **FastAPI(백엔드)**와 **생성형 AI(LLM)**를 결합한 고도화된 해석 서비스를 제공합니다.</p>
+<p><strong>핵심 목표:</strong></p>
+<ul>
+<li>사용자 질문 입력 → 타로 카드 선택(덱 셔플링) → AI 개인화된 운세 상담 제공</li>
+<li>단순한 랜덤 카드 뽑기를 넘어선 맥락 기반 해석 서비스</li>
+</ul>
+<h3>1.2 프로젝트 주요 특징 (Project Key Features)</h3>
+<ul>
+<li>🎯 <strong>고품질 난수 생성</strong>: <code>secrets</code> 모듈을 활용한 진정성 있는 셔플</li>
+<li>🤖 <strong>AI 기반 해석</strong>: OpenAI/Gemini API 연동을 통한 문맥 기반 자연어 해석</li>
+<li>📊 <strong>사용자 기록 관리</strong>: 개인 리딩 기록 저장 및 추세 분석</li>
+<li>🔄 <strong>실시간 스트리밍</strong>: AI가 타이핑하듯 답변을 실시간으로 출력</li>
+</ul>
+<hr />
+<h2>🛠️ 2. 기술 스택 (Technology Stack)</h2>
+<h3>2.1 기술스택 백엔드 (Technology Backend)</h3>
+<p><strong>핵심 프레임워크:</strong></p>
+<ul>
+<li><strong>FastAPI</strong>: 높은 성능, 비동기 처리, 자동 문서화</li>
+<li><strong>LangChain</strong>: LLM 프롬프트 관리 및 체이닝</li>
+<li><strong>OpenAI API / Google Gemini API</strong>: AI 해석 엔진</li>
+</ul>
+<p><strong>지원 라이브러리:</strong></p>
+<ul>
+<li><strong>Pillow (PIL)</strong>: 카드 이미지 리사이징, 스프레드 이미지 합성</li>
+<li><strong>NumPy &amp; Secrets</strong>: 정밀한 셔플 알고리즘</li>
+<li><strong>SQLAlchemy</strong>: Python 객체와 DB 매핑을 위한 ORM</li>
+</ul>
+<h3>2.2 기술스택 데이터베이스 (Technology Database)</h3>
+<ul>
+<li><strong>PostgreSQL</strong>: 사용자 정보, 리딩 기록, 카드 메타데이터 저장</li>
+<li><strong>SQLAlchemy</strong>: Python 객체 관계 매핑</li>
+</ul>
+<h3>2.3 기술스택 프론트엔드 옵션 (Technology Frontend Options)</h3>
+<p><strong>옵션 1 (Full Python):</strong></p>
+<ul>
+<li><strong>Streamlit</strong> 또는 <strong>NiceGUI</strong>: 빠른 프로토타이핑용</li>
+</ul>
+<p><strong>옵션 2 (상용 서비스급):</strong></p>
+<ul>
+<li><strong>React.js</strong> 또는 <strong>Flutter</strong>(앱): FastAPI와 REST API 통신</li>
+</ul>
+<hr />
+<h2>🏗️ 3. 시스템 아키텍처 (System Architecture)</h2>
+<h3>3.1 아키텍처 전체 구조 (Architecture Overview)</h3>
+<p>전체 시스템은 <strong>Client-Server 구조</strong>를 따르며, AI 해석 엔진이 별도의 모듈로 통합됩니다.</p>
+<h3>3.2 아키텍처 계층 구조 (Architecture Layer Structure)</h3>
+<h4>3.2.1 아키텍처 클라이언트 레이어 (Architecture Client Layer)</h4>
+<ul>
+<li>사용자 인터페이스 (카드 선택, 질문 입력, 결과 조회)</li>
+</ul>
+<h4>3.2.2 아키텍처 API 게이트웨이 (Architecture API Gateway)</h4>
+<ul>
+<li>인증, 요청 속도 제한 (Rate Limiting)</li>
+</ul>
+<h4>3.2.3 아키텍처 서비스 레이어 (Architecture Service Layer)</h4>
+<p><strong>핵심 로직:</strong></p>
+<ul>
+<li><strong>Deck Service</strong>: 덱 초기화, 셔플, 카드 뽑기 로직</li>
+<li><strong>Interpretation Service</strong>: 뽑힌 카드 + 질문 + 카드 위치를 조합하여 LLM에 프롬프트 전송</li>
+<li><strong>User Service</strong>: 회원가입, 로그인, 기록 관리</li>
+</ul>
+<h4>3.2.4 아키텍처 데이터 레이어 (Architecture Data Layer)</h4>
+<ul>
+<li>PostgreSQL DB 및 카드 이미지 저장소 (S3 or Local)</li>
+</ul>
+<hr />
+<h2>⚙️ 4. 핵심 로직 및 알고리즘 설계 (Core Logic &amp; Algorithm)</h2>
+<h3>4.1 로직 셔플 및 드로우 (Logic Shuffling &amp; Drawing)</h3>
+<p>운세 프로그램의 '우연성'을 강조하기 위해 암호학적으로 안전한 난수를 사용합니다.</p>
+<pre><code class="language-python">import secrets
+
+def shuffle_deck(deck: list) -&gt; list:
+    &quot;&quot;&quot;
+    secrets 모듈을 사용하여 예측 불가능한 셔플 구현
+    &quot;&quot;&quot;
+    shuffled = deck[:]
+    # Fisher-Yates shuffle 알고리즘 변형 적용
+    for i in range(len(shuffled) - 1, 0, -1):
+        j = secrets.randbelow(i + 1)
+        shuffled[i], shuffled[j] = shuffled[j], shuffled[i]
+    return shuffled
+
+def draw_cards(shuffled_deck: list, count: int) -&gt; list:
+    &quot;&quot;&quot;
+    셔플된 덱에서 지정된 수만큼 카드를 뽑는 함수
+    &quot;&quot;&quot;
+    return shuffled_deck[:count]
+</code></pre>
+<h3>4.2 로직 스프레드 시스템 (Logic Spread System)</h3>
+<p>다양한 배열법(Spread)을 좌표 기반으로 관리합니다.</p>
+<p><strong>스프레드 타입:</strong></p>
+<ul>
+<li><strong>1카드 (One Card)</strong>: 오늘의 운세, Yes/No 질문</li>
+<li><strong>3카드 (Three Card)</strong>: 과거 / 현재 / 미래</li>
+<li><strong>켈틱 크로스 (Celtic Cross)</strong>: 심층 분석 (10장 배열)</li>
+</ul>
+<pre><code class="language-python">class SpreadType:
+    ONE_CARD = {
+        &quot;name&quot;: &quot;원카드&quot;,
+        &quot;positions&quot;: [{&quot;index&quot;: 0, &quot;meaning&quot;: &quot;현재 상황&quot;}],
+        &quot;card_count&quot;: 1
+    }
+  
+    THREE_CARD = {
+        &quot;name&quot;: &quot;쓰리카드&quot;,
+        &quot;positions&quot;: [
+            {&quot;index&quot;: 0, &quot;meaning&quot;: &quot;과거&quot;},
+            {&quot;index&quot;: 1, &quot;meaning&quot;: &quot;현재&quot;}, 
+            {&quot;index&quot;: 2, &quot;meaning&quot;: &quot;미래&quot;}
+        ],
+        &quot;card_count&quot;: 3
+    }
+  
+    CELTIC_CROSS = {
+        &quot;name&quot;: &quot;켈틱 크로스&quot;,
+        &quot;positions&quot;: [
+            {&quot;index&quot;: 0, &quot;meaning&quot;: &quot;현재 상황&quot;},
+            {&quot;index&quot;: 1, &quot;meaning&quot;: &quot;도전과 장애물&quot;},
+            # ... 총 10개 위치
+        ],
+        &quot;card_count&quot;: 10
+    }
+</code></pre>
+<h3>4.3 로직 AI 해석 프롬프트 엔지니어링 (Logic AI Prompt Engineering)</h3>
+<p>LangChain을 활용한 스토리텔링 기반 해석 시스템:</p>
+<pre><code class="language-python">from langchain.prompts import PromptTemplate
+
+tarot_interpretation_prompt = PromptTemplate(
+    input_variables=[&quot;question&quot;, &quot;cards_info&quot;, &quot;spread_type&quot;],
+    template=&quot;&quot;&quot;
+    당신은 신비로운 타로 리더입니다. 사용자가 '{question}'라고 물었습니다.
+  
+    선택된 스프레드: {spread_type}
+  
+    뽑힌 카드들:
+    {cards_info}
+  
+    이 카드들의 관계를 연결하여 사용자의 질문에 대한 조언과 
+    미래 예측을 부드럽고 따뜻한 어조로 설명해주세요.
+  
+    응답 구조:
+    1. 카드들의 전체적인 메시지
+    2. 각 위치별 카드의 의미와 해석
+    3. 종합적인 조언과 가이던스
+    &quot;&quot;&quot;
+)
+</code></pre>
+<hr />
+<h2>🗄️ 5. 데이터베이스 설계 (Database Design)</h2>
+<h3>5.1 데이터베이스 ERD 스키마 (Database ERD Schema)</h3>
+<p>데이터의 무결성을 위한 관계형 데이터베이스 구조:</p>
+<table>
+<thead>
+<tr>
+<th>Table Name</th>
+<th>Description</th>
+<th>Key Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Users</strong></td>
+<td>사용자 정보</td>
+<td><code>user_id</code>, <code>email</code>, <code>nickname</code>, <code>birth_date</code>, <code>created_at</code></td>
+</tr>
+<tr>
+<td><strong>TarotCards</strong></td>
+<td>78장 카드 정보</td>
+<td><code>card_id</code>, <code>name_en</code>, <code>name_kr</code>, <code>image_url</code>, <code>basic_keywords</code>, <code>element</code>, <code>suit</code></td>
+</tr>
+<tr>
+<td><strong>Readings</strong></td>
+<td>리딩 세션 기록</td>
+<td><code>reading_id</code>, <code>user_id</code>, <code>question</code>, <code>spread_type</code>, <code>created_at</code>, <code>ai_summary</code></td>
+</tr>
+<tr>
+<td><strong>ReadingDetails</strong></td>
+<td>세션별 카드 상세</td>
+<td><code>detail_id</code>, <code>reading_id</code>, <code>card_id</code>, <code>position_index</code>, <code>is_reversed</code></td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 데이터베이스 테이블 상세 (Database Table Details)</h3>
+<pre><code class="language-sql">-- Users 테이블
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    nickname VARCHAR(100) NOT NULL,
+    birth_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TarotCards 테이블  
+CREATE TABLE tarot_cards (
+    card_id SERIAL PRIMARY KEY,
+    name_en VARCHAR(100) NOT NULL,
+    name_kr VARCHAR(100) NOT NULL,
+    image_url VARCHAR(500),
+    basic_keywords TEXT,
+    element VARCHAR(50),
+    suit VARCHAR(50),
+    card_number INTEGER
+);
+
+-- Readings 테이블
+CREATE TABLE readings (
+    reading_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    question TEXT NOT NULL,
+    spread_type VARCHAR(50) NOT NULL,
+    ai_summary TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ReadingDetails 테이블
+CREATE TABLE reading_details (
+    detail_id SERIAL PRIMARY KEY,
+    reading_id INTEGER REFERENCES readings(reading_id),
+    card_id INTEGER REFERENCES tarot_cards(card_id),
+    position_index INTEGER NOT NULL,
+    is_reversed BOOLEAN DEFAULT FALSE
+);
+</code></pre>
+<hr />
+<h2>🔌 6. API 엔드포인트 설계 (API Endpoint Design)</h2>
+<h3>6.1 API RESTful 엔드포인트 (API RESTful Endpoints)</h3>
+<h4>6.1.1 API 카드 관리 엔드포인트 (API Card Management)</h4>
+<pre><code class="language-http">GET /api/cards
+</code></pre>
+<ul>
+<li><strong>설명</strong>: 전체 타로 카드 메타데이터 조회 (캐싱 권장)</li>
+<li><strong>응답</strong>: 78장 카드 정보 JSON 배열</li>
+</ul>
+<h4>6.1.2 API 리딩 세션 엔드포인트 (API Reading Session)</h4>
+<p><strong>덱 셔플 요청:</strong></p>
+<pre><code class="language-http">POST /api/reading/shuffle
+</code></pre>
+<ul>
+<li><strong>요청 본문</strong>: <code>{&quot;user_id&quot;: &quot;123&quot;}</code></li>
+<li><strong>응답</strong>: <code>{&quot;session_id&quot;: &quot;uuid-string&quot;, &quot;status&quot;: &quot;shuffled&quot;}</code></li>
+</ul>
+<p><strong>카드 뽑기 요청:</strong></p>
+<pre><code class="language-http">POST /api/reading/draw
+</code></pre>
+<ul>
+<li><strong>요청 본문</strong>:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;session_id&quot;: &quot;uuid-string&quot;,
+    &quot;spread_type&quot;: &quot;three_card&quot;,
+    &quot;question&quot;: &quot;오늘 하루는 어떨까요?&quot;
+}
+</code></pre>
+<ul>
+<li><strong>응답</strong>: 선택된 카드 ID 리스트 및 이미지 URL</li>
+</ul>
+<p><strong>AI 해석 요청:</strong></p>
+<pre><code class="language-http">POST /api/reading/interpret
+</code></pre>
+<ul>
+<li><strong>특징</strong>: Server-Sent Events를 통한 실시간 스트리밍 응답</li>
+<li><strong>응답</strong>: AI가 타이핑하듯 점진적 답변 출력</li>
+</ul>
+<h4>6.1.3 API 사용자 기록 엔드포인트 (API User History)</h4>
+<pre><code class="language-http">GET /api/history/{user_id}
+</code></pre>
+<ul>
+<li><strong>설명</strong>: 과거 리딩 기록 조회</li>
+<li><strong>쿼리 파라미터</strong>: <code>limit</code>, <code>offset</code>, <code>date_from</code>, <code>date_to</code></li>
+</ul>
+<hr />
+<h2>🚀 7. 개발 로드맵 (Development Roadmap)</h2>
+<h3>7.1 로드맵 1단계: 기반 구축 (Roadmap Phase 1: Foundation)</h3>
+<ul>
+<li>78장 타로 카드 데이터(JSON) 구축 및 이미지 리소스 확보</li>
+<li>FastAPI 기본 서버 세팅 및 PostgreSQL 연결</li>
+<li><strong>예상 기간</strong>: 2주</li>
+</ul>
+<h3>7.2 로드맵 2단계: 코어 로직 (Roadmap Phase 2: Core Logic)</h3>
+<ul>
+<li><code>secrets</code> 기반 셔플 로직 구현</li>
+<li>스프레드 좌표 시스템 개발</li>
+<li>카드 뽑기 및 위치 매핑 로직</li>
+<li><strong>예상 기간</strong>: 2주</li>
+</ul>
+<h3>7.3 로드맵 3단계: AI 연동 (Roadmap Phase 3: AI Integration)</h3>
+<ul>
+<li>OpenAI API 연동 및 프롬프트 엔지니어링</li>
+<li>LangChain을 통한 프롬프트 템플릿 관리</li>
+<li>AI 환각 현상 제어 및 품질 검증</li>
+<li><strong>예상 기간</strong>: 3주</li>
+</ul>
+<h3>7.4 로드맵 4단계: 클라이언트 개발 (Roadmap Phase 4: Client Development)</h3>
+<ul>
+<li>웹/앱 UI 개발</li>
+<li>API 연동 및 실시간 스트리밍 구현</li>
+<li>사용자 경험(UX) 최적화</li>
+<li><strong>예상 기간</strong>: 4주</li>
+</ul>
+<h3>7.5 로드맵 5단계: 배포 및 운영 (Roadmap Phase 5: Deployment)</h3>
+<ul>
+<li>Docker 컨테이너화</li>
+<li>클라우드(AWS/GCP) 배포</li>
+<li>모니터링 및 로깅 시스템 구축</li>
+<li><strong>예상 기간</strong>: 2주</li>
+</ul>
+<hr />
+<h2>💡 8. 다음 단계 제안 (Next Steps Suggestion)</h2>
+<h3>8.1 제안 우선순위 옵션 (Suggestion Priority Options)</h3>
+<p><strong>옵션 A: MVP 프로토타입 개발</strong></p>
+<ul>
+<li>FastAPI 기반 핵심 기능 구현</li>
+<li>기본 셔플 로직 및 API 엔드포인트 개발</li>
+<li><strong>예상 소요</strong>: 1주</li>
+</ul>
+<p><strong>옵션 B: 데이터베이스 상세 설계</strong></p>
+<ul>
+<li>PostgreSQL 스키마 완성</li>
+<li>샘플 데이터 생성 및 시드 스크립트 작성</li>
+<li><strong>예상 소요</strong>: 3-4일</li>
+</ul>
+<p><strong>옵션 C: AI 프롬프트 엔지니어링 연구</strong></p>
+<ul>
+<li>다양한 LLM 모델 테스트 및 비교</li>
+<li>최적 프롬프트 템플릿 개발</li>
+<li><strong>예상 소요</strong>: 1주</li>
+</ul>
+<h3>8.2 제안 권장 시작점 (Suggestion Recommended Starting Point)</h3>
+<p><strong>1순위</strong>: MVP 프로토타입 개발로 핵심 기능 검증 후 점진적 확장<br />
+<strong>2순위</strong>: 데이터베이스 설계 완료로 안정적인 데이터 구조 확립</p>
+<hr />
+<h2>📊 9. 예상 성과 및 기대효과 (Expected Results)</h2>
+<h3>9.1 성과 기술적 성과 (Results Technical Achievement)</h3>
+<ul>
+<li><strong>고성능</strong>: FastAPI의 비동기 처리로 동시 사용자 1000명+ 지원</li>
+<li><strong>확장성</strong>: 마이크로서비스 아키텍처로 모듈별 독립적 확장 가능</li>
+<li><strong>신뢰성</strong>: <code>secrets</code> 모듈을 통한 진정한 랜덤성 확보</li>
+</ul>
+<h3>9.2 성과 비즈니스 가치 (Results Business Value)</h3>
+<ul>
+<li><strong>개인화</strong>: AI 기반 맞춤형 해석으로 사용자 만족도 증대</li>
+<li><strong>데이터 자산</strong>: 사용자 리딩 패턴 분석을 통한 인사이트 발굴</li>
+<li><strong>확장 가능</strong>: 다른 점술 분야(사주, 타로 등)로 플랫폼 확장 가능</li>
+</ul>
+<hr />
+<p><em>이 설계 보고서는 Python 최신 트렌드와 AI 기술을 결합한 혁신적인 타로 리딩 플랫폼 구축을 위한 종합적인 가이드입니다.</em></p>
+<hr />
+<h1>📜 Part 2: 심화 기술 명세서</h1>
+<h2>PyTarot Intelligent System - 상용화 기술 명세</h2>
+<p><strong>설계 철학</strong>: 단순한 개발 계획을 넘어 실제 상용화 가능한 수준의 기술적 깊이를 담은 명세서입니다. 각 단계는 **데이터(Data) → 백엔드(Backend) → 지능(Intelligence) → 인프라(Infrastructure)**의 논리적 흐름을 따르며, 현업 전문가 수준의 기술 스택과 아키텍처 패턴을 적용했습니다.</p>
+<hr />
+<h2>🎯 Phase 1. 데이터 모델링 및 코어 엔진 설계</h2>
+<h3>Phase 1 - The Foundation (데이터 기반)</h3>
+<p><strong>목표:</strong> 데이터 무결성을 보장하고, 타로의 핵심인 '무작위성(Randomness)'을 기술적으로 완벽하게 구현합니다.</p>
+<h4>1.1 Phase1 Advanced DB Schema (고급 데이터베이스 스키마)</h4>
+<p><strong>PostgreSQL + SQLAlchemy 2.0 기반</strong></p>
+<p>단순 저장이 아닌, <strong>사용자 행동 분석</strong>과 <strong>확장성</strong>을 고려한 스키마입니다.</p>
+<p><strong>핵심 테이블 구조:</strong></p>
+<ul>
+<li><strong><code>TarotDeck</code> (Master Data)</strong>: 78장 카드의 정방향/역방향 키워드, 원소(불/물/공기/흙), 수비학적 의미, 이미지 경로를 JSONB 타입으로 저장하여 유연성 확보</li>
+<li><strong><code>UserProfile</code></strong>: 사용자 기본 정보 외에 <code>birth_chart</code>(점성술 연계용 데이터) 컬럼 확보</li>
+<li><strong><code>ReadingSession</code></strong>: 세션 ID(UUID)를 PK로 사용. 질문 텍스트, 선택된 스프레드 타입, <strong>AI 분석 소요 시간</strong>, 사용자 피드백(평점) 저장</li>
+<li><strong><code>CardSelection</code></strong>: 세션과 1:N 관계. <code>position_index</code>(과거/현재/미래 등 위치), <code>orientation</code>(정/역방향) 저장</li>
+</ul>
+<pre><code class="language-python"># SQLAlchemy 2.0 모델 예시
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, JSON, UUID
+from sqlalchemy.orm import relationship, DeclarativeBase
+from datetime import datetime
+import uuid
+
+class Base(DeclarativeBase):
+    pass
+
+class TarotDeck(Base):
+    __tablename__ = &quot;tarot_deck&quot;
+  
+    card_id = Column(Integer, primary_key=True)
+    name_en = Column(String(100), nullable=False)
+    name_kr = Column(String(100), nullable=False)
+    suit = Column(String(50))  # Major Arcana, Wands, Cups, Swords, Pentacles
+    element = Column(String(20))  # Fire, Water, Air, Earth
+    keywords_upright = Column(JSON)  # [&quot;success&quot;, &quot;achievement&quot;, ...]
+    keywords_reversed = Column(JSON)
+    symbolism = Column(JSON)  # 상징 체계 (동물, 색상, 숫자 등)
+    image_url = Column(String(500))
+  
+class UserProfile(Base):
+    __tablename__ = &quot;user_profile&quot;
+  
+    user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    email = Column(String(255), unique=True, nullable=False)
+    nickname = Column(String(100))
+    birth_date = Column(DateTime)
+    birth_chart = Column(JSON)  # 점성술 데이터
+    created_at = Column(DateTime, default=datetime.utcnow)
+  
+    readings = relationship(&quot;ReadingSession&quot;, back_populates=&quot;user&quot;)
+
+class ReadingSession(Base):
+    __tablename__ = &quot;reading_session&quot;
+  
+    session_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey(&quot;user_profile.user_id&quot;))
+    question = Column(String(1000), nullable=False)
+    spread_type = Column(String(50))
+    ai_summary = Column(String(5000))
+    processing_time_ms = Column(Integer)  # AI 처리 시간 추적
+    user_rating = Column(Integer)  # 1-5 점
+    created_at = Column(DateTime, default=datetime.utcnow)
+  
+    user = relationship(&quot;UserProfile&quot;, back_populates=&quot;readings&quot;)
+    card_selections = relationship(&quot;CardSelection&quot;, back_populates=&quot;session&quot;)
+
+class CardSelection(Base):
+    __tablename__ = &quot;card_selection&quot;
+  
+    selection_id = Column(Integer, primary_key=True, autoincrement=True)
+    session_id = Column(UUID(as_uuid=True), ForeignKey(&quot;reading_session.session_id&quot;))
+    card_id = Column(Integer, ForeignKey(&quot;tarot_deck.card_id&quot;))
+    position_index = Column(Integer)  # 0: 과거, 1: 현재, 2: 미래 등
+    is_reversed = Column(Boolean, default=False)
+  
+    session = relationship(&quot;ReadingSession&quot;, back_populates=&quot;card_selections&quot;)
+    card = relationship(&quot;TarotDeck&quot;)
+</code></pre>
+<h4>1.2 Phase1 Cryptographic Shuffling Engine (암호학적 셔플 엔진)</h4>
+<p>일반적인 <code>random</code> 모듈은 의사 난수(Pseudo-random)로 패턴이 예측될 수 있습니다. <strong>진정한 우연</strong>을 위해 암호학적 난수를 사용합니다.</p>
+<p><strong>기술 스택:</strong></p>
+<ul>
+<li>Python <code>secrets</code> 모듈</li>
+<li><code>SystemRandom</code> 클래스</li>
+</ul>
+<p><strong>구현 로직:</strong></p>
+<pre><code class="language-python">import secrets
+import math
+from typing import List
+
+class CryptographicShuffler:
+    &quot;&quot;&quot;
+    암호학적으로 안전한 타로 덱 셔플러
+    &quot;&quot;&quot;
+  
+    @staticmethod
+    def shuffle_deck(deck: List[int]) -&gt; List[int]:
+        &quot;&quot;&quot;
+        Fisher-Yates shuffle 알고리즘을 secrets 모듈로 구현
+      
+        Args:
+            deck: 카드 ID 리스트 (0-77)
+          
+        Returns:
+            셔플된 카드 ID 리스트
+        &quot;&quot;&quot;
+        shuffled = deck[:]
+        n = len(shuffled)
+      
+        for i in range(n - 1, 0, -1):
+            # secrets.randbelow()로 암호학적 난수 생성
+            j = secrets.randbelow(i + 1)
+            shuffled[i], shuffled[j] = shuffled[j], shuffled[i]
+      
+        return shuffled
+  
+    @staticmethod
+    def calculate_entropy(shuffle_results: List[List[int]], deck_size: int = 78) -&gt; float:
+        &quot;&quot;&quot;
+        셔플 결과의 엔트로피를 계산하여 무작위성 품질 검증
+      
+        Args:
+            shuffle_results: 여러 번의 셔플 결과
+            deck_size: 덱 크기
+          
+        Returns:
+            엔트로피 값 (높을수록 무작위성이 좋음)
+        &quot;&quot;&quot;
+        # 각 위치별 카드 출현 빈도 계산
+        position_frequencies = {}
+        for shuffle in shuffle_results:
+            for position, card_id in enumerate(shuffle):
+                key = f&quot;{position}_{card_id}&quot;
+                position_frequencies[key] = position_frequencies.get(key, 0) + 1
+      
+        # Shannon 엔트로피 계산
+        total_samples = len(shuffle_results)
+        entropy = 0.0
+      
+        for count in position_frequencies.values():
+            probability = count / total_samples
+            if probability &gt; 0:
+                entropy -= probability * math.log2(probability)
+      
+        return entropy
+  
+    @staticmethod
+    def audit_shuffle(shuffle_id: str, deck: List[int], result: List[int]) -&gt; dict:
+        &quot;&quot;&quot;
+        셔플의 공정성을 감사(Audit)하기 위한 로그 생성
+      
+        Args:
+            shuffle_id: 세션 ID
+            deck: 원본 덱
+            result: 셔플 결과
+          
+        Returns:
+            감사 로그 딕셔너리
+        &quot;&quot;&quot;
+        return {
+            &quot;shuffle_id&quot;: shuffle_id,
+            &quot;timestamp&quot;: datetime.utcnow().isoformat(),
+            &quot;algorithm&quot;: &quot;Fisher-Yates with secrets.randbelow&quot;,
+            &quot;deck_size&quot;: len(deck),
+            &quot;first_three_cards&quot;: result[:3],  # 앞 3장만 로그에 기록
+            &quot;shuffle_hash&quot;: hash(tuple(result))  # 결과 검증용 해시
+        }
+</code></pre>
+<p><strong>검증 로직:</strong></p>
+<p>셔플 후 결과의 엔트로피를 로그로 남겨 셔플의 공정성을 시스템 내부적으로 감사(Audit) 가능하게 설계합니다.</p>
+<hr />
+<h2>🏗️ Phase 2. 백엔드 아키텍처 및 API 개발</h2>
+<h3>Phase 2 - The Skeleton (백엔드 골격)</h3>
+<p><strong>목표:</strong> 고성능 비동기 처리와 유지보수가 용이한 계층형 아키텍처(Layered Architecture)를 구축합니다.</p>
+<h4>2.1 Phase2 FastAPI Async Architecture (비동기 아키텍처)</h4>
+<p><strong>핵심 설계 원칙:</strong></p>
+<ul>
+<li><strong>Dependency Injection (의존성 주입)</strong>: DB 세션, 인증 모듈 등을 <code>Depends()</code>로 주입하여 테스트 용이성 확보</li>
+<li><strong>Pydantic V2</strong>: 데이터 유효성 검사 및 직렬화 속도 최적화</li>
+<li><strong>Layer Separation</strong>: 관심사의 분리</li>
+</ul>
+<p><strong>계층 구조:</strong></p>
+<pre><code>프로젝트 루트/
+├── app/
+│   ├── api/
+│   │   ├── routers/           # URL 엔드포인트 정의
+│   │   │   ├── cards.py
+│   │   │   ├── readings.py
+│   │   │   └── users.py
+│   │   └── dependencies.py    # 의존성 주입 함수
+│   │
+│   ├── core/
+│   │   ├── config.py          # 환경 설정
+│   │   ├── security.py        # 인증/인가
+│   │   └── shuffler.py        # 셔플 엔진
+│   │
+│   ├── services/              # 비즈니스 로직
+│   │   ├── deck_service.py
+│   │   ├── interpretation_service.py
+│   │   └── user_service.py
+│   │
+│   ├── repositories/          # DB CRUD 전담
+│   │   ├── card_repository.py
+│   │   └── reading_repository.py
+│   │
+│   ├── models/                # SQLAlchemy 모델
+│   │   └── database.py
+│   │
+│   └── schemas/               # Pydantic 스키마
+│       ├── card_schemas.py
+│       └── reading_schemas.py
+│
+└── main.py                    # FastAPI 앱 진입점
+</code></pre>
+<p><strong>FastAPI 구현 예시:</strong></p>
+<pre><code class="language-python"># main.py
+from fastapi import FastAPI
+from app.api.routers import cards, readings, users
+from app.core.config import settings
+
+app = FastAPI(
+    title=&quot;PyTarot API&quot;,
+    description=&quot;AI-Powered Tarot Reading Platform&quot;,
+    version=&quot;1.0.0&quot;
+)
+
+# 라우터 등록
+app.include_router(cards.router, prefix=&quot;/api/cards&quot;, tags=[&quot;cards&quot;])
+app.include_router(readings.router, prefix=&quot;/api/readings&quot;, tags=[&quot;readings&quot;])
+app.include_router(users.router, prefix=&quot;/api/users&quot;, tags=[&quot;users&quot;])
+
+@app.get(&quot;/&quot;)
+async def root():
+    return {&quot;message&quot;: &quot;Welcome to PyTarot API&quot;}
+
+
+# app/api/routers/readings.py
+from fastapi import APIRouter, Depends, HTTPException
+from app.services.deck_service import DeckService
+from app.services.interpretation_service import InterpretationService
+from app.schemas.reading_schemas import ReadingRequest, ReadingResponse
+from app.api.dependencies import get_deck_service, get_interpretation_service
+
+router = APIRouter()
+
+@router.post(&quot;/shuffle&quot;, response_model=dict)
+async def shuffle_deck(
+    deck_service: DeckService = Depends(get_deck_service)
+):
+    &quot;&quot;&quot;덱 셔플 엔드포인트&quot;&quot;&quot;
+    session_id = await deck_service.create_shuffled_session()
+    return {&quot;session_id&quot;: session_id, &quot;status&quot;: &quot;shuffled&quot;}
+
+@router.post(&quot;/draw&quot;, response_model=ReadingResponse)
+async def draw_cards(
+    request: ReadingRequest,
+    deck_service: DeckService = Depends(get_deck_service),
+    interpretation_service: InterpretationService = Depends(get_interpretation_service)
+):
+    &quot;&quot;&quot;카드 뽑기 및 해석 엔드포인트&quot;&quot;&quot;
+    # 1. 카드 뽑기
+    drawn_cards = await deck_service.draw_cards(
+        session_id=request.session_id,
+        spread_type=request.spread_type,
+        count=request.card_count
+    )
+  
+    # 2. AI 해석 생성
+    interpretation = await interpretation_service.generate_interpretation(
+        question=request.question,
+        cards=drawn_cards,
+        spread_type=request.spread_type
+    )
+  
+    return ReadingResponse(
+        session_id=request.session_id,
+        cards=drawn_cards,
+        interpretation=interpretation
+    )
+</code></pre>
+<h4>2.2 Phase2 Context-Aware Spread System (맥락 인식 스프레드 시스템)</h4>
+<p>스프레드 방식을 하드코딩하지 않고, **좌표 시스템(Coordinate System)**으로 추상화합니다.</p>
+<p><strong>구현 방식:</strong></p>
+<p>각 스프레드(켈틱 크로스 등)를 JSON 설정 파일로 관리:</p>
+<pre><code class="language-json">{
+  &quot;spread_types&quot;: {
+    &quot;three_card&quot;: {
+      &quot;name&quot;: &quot;Three Card Spread&quot;,
+      &quot;name_kr&quot;: &quot;쓰리카드 스프레드&quot;,
+      &quot;card_count&quot;: 3,
+      &quot;positions&quot;: [
+        {
+          &quot;index&quot;: 0,
+          &quot;meaning&quot;: &quot;past&quot;,
+          &quot;meaning_kr&quot;: &quot;과거&quot;,
+          &quot;x&quot;: 0,
+          &quot;y&quot;: 0,
+          &quot;description&quot;: &quot;과거의 상황과 영향&quot;
+        },
+        {
+          &quot;index&quot;: 1,
+          &quot;meaning&quot;: &quot;present&quot;,
+          &quot;meaning_kr&quot;: &quot;현재&quot;,
+          &quot;x&quot;: 150,
+          &quot;y&quot;: 0,
+          &quot;description&quot;: &quot;현재의 상황과 도전&quot;
+        },
+        {
+          &quot;index&quot;: 2,
+          &quot;meaning&quot;: &quot;future&quot;,
+          &quot;meaning_kr&quot;: &quot;미래&quot;,
+          &quot;x&quot;: 300,
+          &quot;y&quot;: 0,
+          &quot;description&quot;: &quot;미래의 가능성과 결과&quot;
+        }
+      ]
+    },
+    &quot;celtic_cross&quot;: {
+      &quot;name&quot;: &quot;Celtic Cross&quot;,
+      &quot;name_kr&quot;: &quot;켈틱 크로스&quot;,
+      &quot;card_count&quot;: 10,
+      &quot;positions&quot;: [
+        {&quot;index&quot;: 0, &quot;meaning&quot;: &quot;present&quot;, &quot;meaning_kr&quot;: &quot;현재 상황&quot;, &quot;x&quot;: 200, &quot;y&quot;: 200},
+        {&quot;index&quot;: 1, &quot;meaning&quot;: &quot;challenge&quot;, &quot;meaning_kr&quot;: &quot;도전과 장애&quot;, &quot;x&quot;: 200, &quot;y&quot;: 200, &quot;rotation&quot;: 90},
+        {&quot;index&quot;: 2, &quot;meaning&quot;: &quot;foundation&quot;, &quot;meaning_kr&quot;: &quot;근본 원인&quot;, &quot;x&quot;: 200, &quot;y&quot;: 300},
+        {&quot;index&quot;: 3, &quot;meaning&quot;: &quot;past&quot;, &quot;meaning_kr&quot;: &quot;과거&quot;, &quot;x&quot;: 100, &quot;y&quot;: 200},
+        {&quot;index&quot;: 4, &quot;meaning&quot;: &quot;crown&quot;, &quot;meaning_kr&quot;: &quot;최선의 결과&quot;, &quot;x&quot;: 200, &quot;y&quot;: 100},
+        {&quot;index&quot;: 5, &quot;meaning&quot;: &quot;future&quot;, &quot;meaning_kr&quot;: &quot;가까운 미래&quot;, &quot;x&quot;: 300, &quot;y&quot;: 200},
+        {&quot;index&quot;: 6, &quot;meaning&quot;: &quot;self&quot;, &quot;meaning_kr&quot;: &quot;자신의 태도&quot;, &quot;x&quot;: 450, &quot;y&quot;: 300},
+        {&quot;index&quot;: 7, &quot;meaning&quot;: &quot;environment&quot;, &quot;meaning_kr&quot;: &quot;주변 환경&quot;, &quot;x&quot;: 450, &quot;y&quot;: 250},
+        {&quot;index&quot;: 8, &quot;meaning&quot;: &quot;hopes_fears&quot;, &quot;meaning_kr&quot;: &quot;희망과 두려움&quot;, &quot;x&quot;: 450, &quot;y&quot;: 200},
+        {&quot;index&quot;: 9, &quot;meaning&quot;: &quot;outcome&quot;, &quot;meaning_kr&quot;: &quot;최종 결과&quot;, &quot;x&quot;: 450, &quot;y&quot;: 150}
+      ]
+    }
+  }
+}
+</code></pre>
+<p><strong>Python 구현:</strong></p>
+<pre><code class="language-python"># app/core/spread_manager.py
+import json
+from typing import Dict, List
+from pathlib import Path
+
+class SpreadManager:
+    &quot;&quot;&quot;스프레드 설정 관리자&quot;&quot;&quot;
+  
+    def __init__(self, config_path: str = &quot;config/spreads.json&quot;):
+        self.config_path = Path(config_path)
+        self.spreads = self._load_spreads()
+  
+    def _load_spreads(self) -&gt; Dict:
+        &quot;&quot;&quot;JSON 파일에서 스프레드 설정 로드&quot;&quot;&quot;
+        with open(self.config_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+  
+    def get_spread(self, spread_type: str) -&gt; Dict:
+        &quot;&quot;&quot;특정 스프레드 정보 반환&quot;&quot;&quot;
+        return self.spreads['spread_types'].get(spread_type)
+  
+    def get_position_meanings(self, spread_type: str) -&gt; List[str]:
+        &quot;&quot;&quot;스프레드의 위치별 의미 리스트 반환&quot;&quot;&quot;
+        spread = self.get_spread(spread_type)
+        if not spread:
+            return []
+        return [pos['meaning_kr'] for pos in spread['positions']]
+  
+    def get_card_count(self, spread_type: str) -&gt; int:
+        &quot;&quot;&quot;스프레드에 필요한 카드 수 반환&quot;&quot;&quot;
+        spread = self.get_spread(spread_type)
+        return spread['card_count'] if spread else 0
+</code></pre>
+<p><strong>이점:</strong></p>
+<ul>
+<li>앱 프론트엔드에서 이 좌표 데이터를 받아 카드를 시각적으로 배치</li>
+<li>백엔드 수정 없이 새로운 스프레드 추가 가능</li>
+<li>다국어 지원 용이</li>
+</ul>
+<hr />
+<h2>🤖 Phase 3. AI 오케스트레이션 및 프롬프트 엔지니어링</h2>
+<h3>Phase 3 - The Intelligence (지능 레이어)</h3>
+<p><strong>목표:</strong> 단순한 텍스트 생성을 넘어, 전문 타로 리더의 화법을 구사하는 AI 파이프라인을 구축합니다.</p>
+<h4>3.1 Phase3 LLM Pipeline with LangChain (LLM 파이프라인)</h4>
+<p>AI 답변 생성 과정을 체계적인 파이프라인으로 구성합니다.</p>
+<p><strong>Context Injection (맥락 주입):</strong></p>
+<pre><code class="language-python"># app/services/interpretation_service.py
+from langchain.prompts import ChatPromptTemplate
+from langchain.chat_models import ChatOpenAI
+from langchain.schema import SystemMessage, HumanMessage
+from typing import List, Dict
+
+class InterpretationService:
+    &quot;&quot;&quot;AI 기반 타로 해석 서비스&quot;&quot;&quot;
+  
+    def __init__(self, api_key: str, model: str = &quot;gpt-4&quot;):
+        self.llm = ChatOpenAI(
+            api_key=api_key,
+            model=model,
+            temperature=0.7,  # 창의성과 일관성의 균형
+            streaming=True
+        )
+        self.system_prompt = self._create_system_prompt()
+  
+    def _create_system_prompt(self) -&gt; str:
+        &quot;&quot;&quot;시스템 프롬프트 생성&quot;&quot;&quot;
+        return &quot;&quot;&quot;
+당신은 20년 경력의 심리 상담가이자 타로 마스터입니다.
+
+**당신의 역할:**
+- 사용자의 질문에 대해 뽑힌 타로 카드들을 해석합니다
+- 각 카드의 상징과 위치를 고려하여 종합적인 스토리를 만듭니다
+- 공감적이고 따뜻하며, 약간 신비로운 어조를 사용합니다
+- 단순히 키워드를 나열하지 않고, 카드 간의 관계와 흐름을 설명합니다
+
+**주의사항:**
+- 제공된 카드 정보를 바탕으로만 해석합니다 (환각 방지)
+- 지나치게 부정적이거나 공포를 조장하는 표현은 피합니다
+- 사용자에게 선택권과 자유의지가 있음을 항상 강조합니다
+- 구체적이고 실용적인 조언을 포함합니다
+
+**응답 구조:**
+1. 전체적인 메시지 (카드들이 전하는 핵심 메시지)
+2. 각 위치별 카드 해석 (과거-현재-미래의 흐름)
+3. 종합 조언 (실천 가능한 가이던스)
+&quot;&quot;&quot;
+  
+    async def generate_interpretation(
+        self,
+        question: str,
+        cards: List[Dict],
+        spread_type: str
+    ) -&gt; str:
+        &quot;&quot;&quot;
+        AI 해석 생성
+      
+        Args:
+            question: 사용자 질문
+            cards: 뽑힌 카드 리스트 (카드 정보 + 위치 + 정/역방향)
+            spread_type: 스프레드 타입
+          
+        Returns:
+            AI가 생성한 해석 텍스트
+        &quot;&quot;&quot;
+        # 카드 정보를 프롬프트에 주입할 형식으로 변환
+        cards_context = self._format_cards_context(cards)
+      
+        # 사용자 프롬프트 생성
+        user_prompt = f&quot;&quot;&quot;
+**사용자의 질문:** {question}
+
+**선택된 스프레드:** {spread_type}
+
+**뽑힌 카드들:**
+{cards_context}
+
+위 카드들을 바탕으로 사용자의 질문에 대한 타로 리딩을 해주세요.
+&quot;&quot;&quot;
+      
+        # LLM 호출
+        messages = [
+            SystemMessage(content=self.system_prompt),
+            HumanMessage(content=user_prompt)
+        ]
+      
+        response = await self.llm.agenerate([messages])
+        return response.generations[0][0].text
+  
+    def _format_cards_context(self, cards: List[Dict]) -&gt; str:
+        &quot;&quot;&quot;카드 정보를 프롬프트 형식으로 포맷팅&quot;&quot;&quot;
+        formatted = []
+      
+        for card in cards:
+            position = card['position_meaning']
+            name = card['name_kr']
+            orientation = &quot;정방향&quot; if not card['is_reversed'] else &quot;역방향&quot;
+            keywords = card['keywords_upright'] if not card['is_reversed'] else card['keywords_reversed']
+          
+            card_text = f&quot;&quot;&quot;
+위치: {position}
+카드: {name} ({orientation})
+핵심 키워드: {', '.join(keywords)}
+상징: {card.get('symbolism', '해당 없음')}
+&quot;&quot;&quot;
+            formatted.append(card_text.strip())
+      
+        return &quot;\n\n&quot;.join(formatted)
+</code></pre>
+<p><strong>Hallucination Control (환각 제어):</strong></p>
+<ul>
+<li>카드의 기본 의미는 DB에서 가져온 텍스트를 프롬프트에 'Fact'로 제공</li>
+<li>AI가 없는 의미를 지어내지 않도록 통제</li>
+<li>Temperature 값을 0.7로 설정하여 창의성과 일관성 균형</li>
+</ul>
+<h4>3.2 Phase3 Streaming Response (실시간 스트리밍)</h4>
+<p>타로 리딩은 텍스트가 길기 때문에(500자 이상), 사용자가 기다리지 않도록 <strong>타이핑 효과</strong>를 구현합니다.</p>
+<p><strong>SSE (Server-Sent Events) 구현:</strong></p>
+<pre><code class="language-python"># app/api/routers/readings.py
+from fastapi import APIRouter
+from fastapi.responses import StreamingResponse
+from app.services.interpretation_service import InterpretationService
+import asyncio
+
+router = APIRouter()
+
+@router.post(&quot;/interpret/stream&quot;)
+async def interpret_stream(
+    request: InterpretationRequest,
+    service: InterpretationService = Depends(get_interpretation_service)
+):
+    &quot;&quot;&quot;AI 해석을 스트리밍으로 반환&quot;&quot;&quot;
+  
+    async def generate():
+        &quot;&quot;&quot;비동기 제너레이터&quot;&quot;&quot;
+        async for chunk in service.stream_interpretation(
+            question=request.question,
+            cards=request.cards,
+            spread_type=request.spread_type
+        ):
+            # SSE 형식으로 전송
+            yield f&quot;data: {chunk}\n\n&quot;
+            await asyncio.sleep(0.01)  # 타이핑 효과
+  
+    return StreamingResponse(
+        generate(),
+        media_type=&quot;text/event-stream&quot;
+    )
+
+
+# app/services/interpretation_service.py (streaming 메서드 추가)
+async def stream_interpretation(
+    self,
+    question: str,
+    cards: List[Dict],
+    spread_type: str
+):
+    &quot;&quot;&quot;스트리밍 방식으로 AI 해석 생성&quot;&quot;&quot;
+    cards_context = self._format_cards_context(cards)
+    user_prompt = f&quot;질문: {question}\n\n카드: {cards_context}&quot;
+  
+    messages = [
+        SystemMessage(content=self.system_prompt),
+        HumanMessage(content=user_prompt)
+    ]
+  
+    # LangChain의 스트리밍 기능 사용
+    async for chunk in self.llm.astream(messages):
+        if hasattr(chunk, 'content'):
+            yield chunk.content
+</code></pre>
+<p><strong>UX 효과:</strong></p>
+<ul>
+<li>AI가 한 글자씩 생성하는 것을 실시간으로 전송</li>
+<li>마치 실제 상담사가 말하는 듯한 몰입감 제공</li>
+<li>사용자 대기 시간 체감 감소</li>
+</ul>
+<hr />
+<h2>🚀 Phase 4. 인프라 구축 및 배포 전략</h2>
+<h3>Phase 4 - The Delivery (배포 및 운영)</h3>
+<p><strong>목표:</strong> 안정적인 서비스 운영과 자동화된 배포 프로세스를 확립합니다.</p>
+<h4>4.1 Phase4 Docker Containerization (컨테이너화)</h4>
+<p><strong>Multi-stage Build 전략:</strong></p>
+<pre><code class="language-dockerfile"># Dockerfile
+# ============= Stage 1: Build =============
+FROM python:3.11-slim as builder
+
+WORKDIR /app
+
+# 시스템 의존성 설치
+RUN apt-get update &amp;&amp; apt-get install -y \
+    gcc \
+    postgresql-client \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# Python 의존성 설치
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# ============= Stage 2: Runtime =============
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Stage 1에서 빌드한 패키지만 복사
+COPY --from=builder /root/.local /root/.local
+
+# 애플리케이션 코드 복사
+COPY ./app ./app
+COPY ./config ./config
+COPY ./main.py .
+
+# PATH에 로컬 bin 추가
+ENV PATH=/root/.local/bin:$PATH
+
+# 비루트 사용자 생성 (보안)
+RUN useradd -m -u 1000 pytarot &amp;&amp; \
+    chown -R pytarot:pytarot /app
+USER pytarot
+
+# 포트 노출
+EXPOSE 8000
+
+# 헬스체크
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c &quot;import requests; requests.get('http://localhost:8000/health')&quot;
+
+# 실행 명령
+CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8000&quot;]
+</code></pre>
+<p><strong>Docker Compose 구성:</strong></p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: pytarot_api
+    ports:
+      - &quot;8000:8000&quot;
+    environment:
+      - DATABASE_URL=postgresql://pytarot:password@db:5432/pytarot_db
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    networks:
+      - pytarot_network
+    restart: unless-stopped
+
+  db:
+    image: postgres:15-alpine
+    container_name: pytarot_db
+    environment:
+      - POSTGRES_USER=pytarot
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=pytarot_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - pytarot_network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: pytarot_redis
+    volumes:
+      - redis_data:/data
+    networks:
+      - pytarot_network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: pytarot_nginx
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./static:/usr/share/nginx/html/static:ro
+    depends_on:
+      - api
+    networks:
+      - pytarot_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  pytarot_network:
+    driver: bridge
+</code></pre>
+<p><strong>이점:</strong></p>
+<ul>
+<li>이미지 크기 최소화 (Multi-stage build)</li>
+<li>보안 강화 (비루트 사용자 실행)</li>
+<li>로컬 개발 환경 통일</li>
+</ul>
+<h4>4.2 Phase4 Deployment Pipeline (배포 파이프라인)</h4>
+<p><strong>Web Server Interface:</strong></p>
+<pre><code class="language-bash"># Gunicorn + Uvicorn 조합
+gunicorn main:app \
+    --workers 4 \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --bind 0.0.0.0:8000 \
+    --timeout 120 \
+    --graceful-timeout 30 \
+    --log-level info
+</code></pre>
+<p><strong>Nginx 리버스 프록시 설정:</strong></p>
+<pre><code class="language-nginx"># nginx.conf
+upstream pytarot_api {
+    server api:8000;
+}
+
+server {
+    listen 80;
+    server_name pytarot.example.com;
+  
+    # HTTP to HTTPS 리다이렉트
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name pytarot.example.com;
+  
+    # SSL 인증서
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/key.pem;
+  
+    # 정적 파일 (카드 이미지)
+    location /static/ {
+        alias /usr/share/nginx/html/static/;
+        expires 30d;
+        add_header Cache-Control &quot;public, immutable&quot;;
+    }
+  
+    # API 프록시
+    location /api/ {
+        proxy_pass http://pytarot_api;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+      
+        # SSE를 위한 설정
+        proxy_buffering off;
+        proxy_cache off;
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+    }
+  
+    # 헬스체크
+    location /health {
+        proxy_pass http://pytarot_api/health;
+        access_log off;
+    }
+}
+</code></pre>
+<h4>4.3 Phase4 Monitoring &amp; Logging (모니터링)</h4>
+<p><strong>Sentry 연동:</strong></p>
+<pre><code class="language-python"># main.py
+import sentry_sdk
+from sentry_sdk.integrations.fastapi import FastApiIntegration
+from sentry_sdk.integrations.sqlalchemy import SqlalchemyIntegration
+
+sentry_sdk.init(
+    dsn=&quot;https://your-sentry-dsn&quot;,
+    integrations=[
+        FastApiIntegration(),
+        SqlalchemyIntegration(),
+    ],
+    traces_sample_rate=0.1,  # 10%의 트랜잭션 추적
+    environment=&quot;production&quot;
+)
+
+app = FastAPI()
+</code></pre>
+<p><strong>구조화된 로깅:</strong></p>
+<pre><code class="language-python"># app/core/logger.py
+import logging
+import json
+from datetime import datetime
+
+class JSONFormatter(logging.Formatter):
+    &quot;&quot;&quot;JSON 형식 로그 포맷터&quot;&quot;&quot;
+  
+    def format(self, record):
+        log_data = {
+            &quot;timestamp&quot;: datetime.utcnow().isoformat(),
+            &quot;level&quot;: record.levelname,
+            &quot;message&quot;: record.getMessage(),
+            &quot;module&quot;: record.module,
+            &quot;function&quot;: record.funcName,
+        }
+      
+        if record.exc_info:
+            log_data[&quot;exception&quot;] = self.formatException(record.exc_info)
+      
+        return json.dumps(log_data, ensure_ascii=False)
+
+# 로거 설정
+logger = logging.getLogger(&quot;pytarot&quot;)
+handler = logging.StreamHandler()
+handler.setFormatter(JSONFormatter())
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
+</code></pre>
+<hr />
+<h2>💡 Phase 5. 전문가 제언 및 다음 단계</h2>
+<h3>Phase 5 - Next Actions (다음 액션)</h3>
+<h4>5.1 Phase5 리스크 분석 (Risk Analysis)</h4>
+<p><strong>가장 리스크가 높은 부분:</strong> <strong>Phase 3 (AI 프롬프트 엔지니어링)</strong></p>
+<p>이유:</p>
+<ul>
+<li>카드의 의미를 단순히 나열하는 것이 아니라, 카드 간의 '스토리'를 엮어내는 것이 핵심</li>
+<li>LLM의 환각 현상 제어가 어려움</li>
+<li>사용자 만족도에 직접적인 영향</li>
+</ul>
+<h4>5.2 Phase5 우선순위 추천 (Priority Recommendation)</h4>
+<p><strong>다음 단계로 추천하는 작업:</strong></p>
+<p><strong>옵션 1: Core Prototype 개발</strong></p>
+<ul>
+<li><code>secrets</code> 셔플 엔진과 기본 FastAPI 구조가 담긴 전체 프로젝트 폴더 구조 및 파일 코드 생성</li>
+<li><strong>예상 소요</strong>: 1주</li>
+<li><strong>장점</strong>: 빠른 검증 및 데모 가능</li>
+</ul>
+<p><strong>옵션 2: Prompt Engineering 심화</strong></p>
+<ul>
+<li>타로 리딩의 품질을 결정짓는 LangChain용 시스템 프롬프트 템플릿(상세 버전) 작성</li>
+<li>다양한 시나리오별 프롬프트 테스트</li>
+<li><strong>예상 소요</strong>: 1주</li>
+<li><strong>장점</strong>: 서비스 품질 핵심 확보</li>
+</ul>
+<h4>5.3 Phase5 성공 지표 (Success Metrics)</h4>
+<p><strong>기술적 KPI:</strong></p>
+<ul>
+<li>API 응답 시간: 평균 &lt; 2초 (AI 생성 제외)</li>
+<li>AI 스트리밍 첫 응답: &lt; 1초</li>
+<li>시스템 가용성: &gt; 99.9%</li>
+<li>셔플 엔트로피: &gt; 6.0</li>
+</ul>
+<p><strong>비즈니스 KPI:</strong></p>
+<ul>
+<li>사용자 만족도 (평점): &gt; 4.5/5</li>
+<li>재방문율: &gt; 60%</li>
+<li>AI 응답 수용률: &gt; 80%</li>
+</ul>
+<hr />
+<h2>📊 부록: 전체 시스템 플로우</h2>
+<h3>Appendix - System Flow</h3>
+<pre><code>사용자 요청
+    ↓
+[API Gateway] - 인증/속도 제한
+    ↓
+[Deck Service] - secrets 기반 셔플
+    ↓
+[Card Selection] - 스프레드 규칙 적용
+    ↓
+[DB Repository] - 카드 정보 조회
+    ↓
+[Interpretation Service]
+    ├─ 프롬프트 생성
+    ├─ LLM 호출 (LangChain)
+    └─ 스트리밍 응답
+    ↓
+[Response] - SSE로 클라이언트 전송
+    ↓
+사용자 UI에 실시간 표시
+</code></pre>
+<hr />
+<p><em>이 심화 기술 명세서는 PyTarot 프로젝트를 실제 상용 서비스 수준으로 구현하기 위한 종합적인 가이드이며, 데이터-백엔드-지능-인프라의 4단계 아키텍처를 통해 확장 가능하고 안정적인 AI 타로 플랫폼을 구축할 수 있습니다.</em></p>
+
+      </body>
+    </html>
