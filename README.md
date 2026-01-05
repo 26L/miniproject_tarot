@@ -1,4 +1,4 @@
-# 🔮 PyTarot: AI 타로 리딩 플랫폼 (v0.1v)
+# 🔮 PyTarot: AI 타로 리딩 플랫폼 (v0.2)
 
 ## 📖 프로젝트 소개
 **PyTarot**은 최신 Python 트렌드를 반영하여 **FastAPI(백엔드)**와 **생성형 AI(LLM)**를 결합한 고도화된 타로 해석 서비스입니다. 
@@ -6,18 +6,37 @@
 
 ## 🚀 주요 기능
 *   **고품질 난수 생성:** `secrets` 모듈을 활용하여 예측 불가능하고 진정성 있는 셔플을 보장합니다.
+*   **다양한 스프레드:** 원카드, 쓰리카드, 켈틱 크로스 등 다양한 배열법 지원 (v0.2+)
 *   **AI 기반 심층 해석:** OpenAI/Gemini API와 LangChain을 연동하여, 단순 키워드 조합이 아닌 스토리텔링 기반의 상담을 제공합니다.
 *   **실시간 스트리밍:** AI의 답변을 타자 치듯 실시간(SSE)으로 보여주어 사용자 몰입감을 극대화합니다.
-*   **개인화 기록 관리:** 사용자별 리딩 기록을 저장하고 추세를 분석합니다.
-*   **확장 가능한 아키텍처:** Layered Architecture 적용으로 유지보수와 기능 확장이 용이합니다.
+*   **데이터베이스:** PostgreSQL (SQLAlchemy) 기반의 데이터 관리 및 초기화 기능 제공.
 
 ## 🛠️ 기술 스택
 *   **Backend:** Python 3.11+, FastAPI, Uvicorn
 *   **AI & LLM:** LangChain, OpenAI API / Google Gemini API
 *   **Database:** PostgreSQL, SQLAlchemy (Async)
-*   **Tools:** Docker, Pydantic V2, Poetry (권장)
+*   **Tools:** Docker, Pydantic V2
 
-## 📂 폴더 구조 (예정)
+## 📦 설치 및 실행
+
+1. **환경 설정**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+2. **데이터베이스 초기화 (v0.2)**
+   ```bash
+   python scripts/seed_db.py
+   ```
+
+3. **서버 실행**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+## 📂 폴더 구조
 ```
 C:\tarot\
 ├── app/

@@ -19,7 +19,10 @@ class TarotCardDetail(TarotCardBase):
 
 class CardDrawResult(TarotCardBase):
     position_index: int
+    position_meaning: str
     is_reversed: bool
+    keywords: Dict[str, List[str]]
+    description: str
 
 # --- Reading Schemas ---
 class ReadingCreate(BaseModel):

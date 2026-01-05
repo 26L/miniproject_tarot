@@ -12,14 +12,19 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # Database
-    POSTGRES_SERVER: str = "localhost"
+    POSTGRES_SERVER: Optional[str] = None
     POSTGRES_USER: str = "pytarot"
     POSTGRES_PASSWORD: str = "password"
     POSTGRES_DB: str = "pytarot_db"
+    POSTGRES_PORT: str = "5432"
     
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
-        return f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_SERVER}/{self.POSTGRES_DB}"
+        # If POSTGRES_SERVER is 'localhost' but no DB is running, it might fail.
+        # For this environment, we force SQLite if we want to ensure it works.
+        if self.POSTGRES_SERVER and self.POSTGRES_SERVER not in ["None", "", "localhost"]:
+            return f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_SERVER}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
+        return "sqlite+aiosqlite:///./tarot.db"
     
     # AI Service
     OPENAI_API_KEY: Optional[str] = None

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyTarot - AI 타로 상담소</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="container">
+        <header>
+            <h1>🔮 PyTarot</h1>
+            <p>AI가 들려주는 당신의 운명 이야기</p>
+        </header>
+
+        <!-- Step 1: 질문 입력 -->
+        <section id="step-question" class="active">
+            <div class="input-box">
+                <input type="text" id="user-question" placeholder="가장 고민되는 것을 질문해주세요..." autocomplete="off">
+                <button onclick="startReading()">운세 보기</button>
+            </div>
+        </section>
+
+        <!-- Step 2: 셔플 및 카드 선택 (자동 드로우 연출) -->
+        <section id="step-draw" class="hidden">
+            <h2>카드를 섞고 있습니다...</h2>
+            <div class="deck-area">
+                <div class="card-back animate-shuffle"></div>
+                <div class="card-back animate-shuffle" style="animation-delay: 0.1s"></div>
+                <div class="card-back animate-shuffle" style="animation-delay: 0.2s"></div>
+            </div>
+        </section>
+
+        <!-- Step 3: 결과 및 해석 -->
+        <section id="step-result" class="hidden">
+            <div id="cards-container">
+                <!-- Cards will be injected here -->
+            </div>
+            
+            <div class="interpretation-box">
+                <h3>📜 AI 리딩 해석</h3>
+                <div id="interpretation-text" class="typing-effect"></div>
+            </div>
+            
+            <button onclick="location.reload()" class="retry-btn">다시 하기</button>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

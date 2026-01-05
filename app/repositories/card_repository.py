@@ -1,28 +1,21 @@
-import json
-import os
-from typing import List
+from typing import List, Optional
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from app.models.all_models import TarotCard
 from app.schemas.schemas import TarotCardDetail
 
 class CardRepository:
-    def __init__(self):
-        # Temporary: Load from JSON for v0.1 without DB dependency
-        self._cards: List[TarotCardDetail] = []
-        self._load_from_json()
+    def __init__(self, db: AsyncSession):
+        self.db = db
 
-    def _load_from_json(self):
-        file_path = "data/tarot_cards.json"
-        if os.path.exists(file_path):
-            with open(file_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                self._cards = [TarotCardDetail(**item) for item in data]
-        else:
-            print(f"Warning: {file_path} not found.")
+    async def get_all_cards(self) -> List[TarotCard]:
+        """Fetches all tarot cards from the database."""
+        result = await self.db.execute(select(TarotCard))
+        return result.scalars().all()
 
-    def get_all_cards(self) -> List[TarotCardDetail]:
-        return self._cards
-
-    def get_card_by_id(self, card_id: int) -> TarotCardDetail | None:
-        for card in self._cards:
-            if card.card_id == card_id:
-                return card
-        return None
+    async def get_card_by_id(self, card_id: int) -> Optional[TarotCard]:
+        """Fetches a specific card by its ID."""
+        result = await self.db.execute(
+            select(TarotCard).filter(TarotCard.id == card_id)
+        )
+        return result.scalar_one_or_none()

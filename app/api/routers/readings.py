@@ -1,37 +1,33 @@
-from fastapi import APIRouter, HTTPException, Depends
-from app.services.deck_service import deck_service
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas.schemas import ReadingCreate, ReadingResponse, DrawRequest, DrawResponse
+from app.services.deck_service import DeckService
+from app.core.database import get_db
 
 router = APIRouter()
 
 @router.post("/shuffle", response_model=ReadingResponse)
-async def shuffle_deck(reading_in: ReadingCreate):
-    """
-    Starts a new reading session and shuffles the deck securely.
-    """
-    return deck_service.create_session(user_id=reading_in.user_id)
+async def shuffle_deck(
+    request: ReadingCreate,
+    db: AsyncSession = Depends(get_db)
+):
+    service = DeckService(db)
+    return await service.create_session(user_id=request.user_id)
 
 @router.post("/draw", response_model=DrawResponse)
-async def draw_cards(draw_in: DrawRequest):
-    """
-    Draws cards for the specified spread type.
-    """
-    # Define card counts for spreads
-    spread_counts = {
-        "one_card": 1,
-        "three_card": 3,
-        "celtic_cross": 10
-    }
-    
-    count = spread_counts.get(draw_in.spread_type, 3)
-    
-    cards = deck_service.draw_cards(draw_in.session_id, count)
-    
-    if not cards:
-        raise HTTPException(status_code=400, detail="Session expired or invalid")
-        
-    return DrawResponse(
-        session_id=draw_in.session_id,
-        spread_type=draw_in.spread_type,
-        cards=cards
-    )
+async def draw_cards(
+    request: DrawRequest,
+    db: AsyncSession = Depends(get_db)
+):
+    service = DeckService(db)
+    try:
+        cards = await service.draw_cards(request.session_id, request.spread_type)
+        return DrawResponse(
+            session_id=request.session_id,
+            spread_type=request.spread_type,
+            cards=cards
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Internal Server Error during card draw")

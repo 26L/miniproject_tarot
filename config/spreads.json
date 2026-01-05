@@ -1,0 +1,57 @@
+{
+  "spreads": [
+    {
+      "id": "one_card",
+      "name_kr": "원 카드 리딩",
+      "name_en": "One Card Reading",
+      "card_count": 1,
+      "description": "가장 빠르고 명확한 답변을 원할 때 사용합니다.",
+      "positions": [
+        {"index": 0, "meaning": "핵심 답변 / 조언"}
+      ]
+    },
+    {
+      "id": "three_card",
+      "name_kr": "쓰리 카드 (과거/현재/미래)",
+      "name_en": "Three Card (Past/Present/Future)",
+      "card_count": 3,
+      "description": "질문의 흐름을 시간 순서대로 파악합니다.",
+      "positions": [
+        {"index": 0, "meaning": "과거 / 원인"},
+        {"index": 1, "meaning": "현재 / 상황"},
+        {"index": 2, "meaning": "미래 / 결과"}
+      ]
+    },
+    {
+      "id": "body_mind_spirit",
+      "name_kr": "바디/마인드/스피릿",
+      "name_en": "Body, Mind, Spirit",
+      "card_count": 3,
+      "description": "현재 자신의 상태를 다각도로 점검합니다.",
+      "positions": [
+        {"index": 0, "meaning": "신체 (Body) / 현실적 상황"},
+        {"index": 1, "meaning": "마음 (Mind) / 감정과 생각"},
+        {"index": 2, "meaning": "영혼 (Spirit) / 내면의 지혜"}
+      ]
+    },
+    {
+      "id": "celtic_cross",
+      "name_kr": "켈틱 크로스",
+      "name_en": "Celtic Cross",
+      "card_count": 10,
+      "description": "가장 전통적이고 심도 깊은 리딩 방식입니다.",
+      "positions": [
+        {"index": 0, "meaning": "현재 상황"},
+        {"index": 1, "meaning": "방해물 / 도전 과제"},
+        {"index": 2, "meaning": "먼 과거 / 잠재적 원인"},
+        {"index": 3, "meaning": "최근 과거"},
+        {"index": 4, "meaning": "가능한 미래"},
+        {"index": 5, "meaning": "가까운 미래"},
+        {"index": 6, "meaning": "자신 (질문자의 태도)"},
+        {"index": 7, "meaning": "환경 (주변의 영향)"},
+        {"index": 8, "meaning": "희망과 두려움"},
+        {"index": 9, "meaning": "최종 결과"}
+      ]
+    }
+  ]
+}

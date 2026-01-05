@@ -1,63 +1,30 @@
-# 08. 보안 및 환경 설정 가이드 (Security & Environment Setup)
-
-본 문서는 개발 및 배포 환경의 보안성을 확보하고, 일관된 설정을 유지하기 위한 가이드입니다.
+# 08. 보안 및 환경 설정 (Security & Environment Setup)
 
 ## 1. 환경 변수 관리 (.env)
+민감한 정보는 반드시 `.env` 파일로 관리하며, 저장소에는 `.env.example`만 커밋합니다.
 
-민감한 정보는 절대 코드에 하드코딩하지 않으며, `.env` 파일을 통해 관리합니다. `pydantic-settings`를 통해 타입을 검증하며 로드합니다.
+### 필수 변수
+*   `GOOGLE_API_KEY` 또는 `OPENAI_API_KEY`: LLM 사용을 위한 키.
+*   `SECRET_KEY`: JWT 토큰 생성 및 세션 암호화 키.
+*   `POSTGRES_SERVER`, `POSTGRES_USER`... : DB 연결 정보 (옵션).
 
-### 1.1 `.env.example` 구조
-```ini
-# --- General ---
-PROJECT_NAME="PyTarot"
-DEBUG=True
-API_V1_STR="/api/v1"
+## 2. 데이터베이스 설정 (v0.2 Updated)
+본 프로젝트는 **Hybrid Database Strategy**를 채택하고 있습니다.
 
-# --- Security ---
-SECRET_KEY="changethis_to_a_secure_random_string"
-ALGORITHM="HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES=30
+### 2.1 개발 및 로컬 환경 (SQLite)
+*   별도의 설치 없이 `aiosqlite`를 통해 `tarot.db` 파일로 즉시 실행 가능합니다.
+*   `POSTGRES_SERVER` 설정이 없거나 실패 시 자동으로 SQLite로 전환됩니다.
 
-# --- Database ---
-# Local Docker or Cloud DB
-POSTGRES_SERVER="localhost"
-POSTGRES_USER="pytarot"
-POSTGRES_PASSWORD="password"
-POSTGRES_DB="pytarot_db"
+### 2.2 운영 환경 (PostgreSQL)
+*   `.env`에 PostgreSQL 접속 정보를 입력하면 `asyncpg` 드라이버를 통해 고성능 비동기 연결을 맺습니다.
 
-# --- AI Service ---
-OPENAI_API_KEY="sk-..."
-# or
-GOOGLE_API_KEY="AIza..."
-```
-
-## 2. 보안 가이드라인 (Security Guidelines)
-
-### 2.1 API Key 관리
-- `.env` 파일은 `.gitignore`에 반드시 포함되어야 합니다.
-- CI/CD 파이프라인에서는 GitHub Actions Secrets 등을 통해 주입합니다.
-
-### 2.2 의존성 관리
-- `poetry.lock` 또는 `requirements.txt`에 해시값을 포함하여 공급망 공격을 방지합니다.
-- 주기적으로 `pip-audit` 등을 통해 취약점 점검을 수행합니다.
-
-### 2.3 CORS (Cross-Origin Resource Sharing)
-- 개발 환경: `allow_origins=["*"]` (주의)
-- 운영 환경: 구체적인 프론트엔드 도메인만 허용 (예: `https://pytarot.com`)
-
-## 3. 개발 환경 셋업 (Dev Setup)
-
+### 2.3 초기화 명령
 ```bash
-# 1. 가상환경 생성
-python -m venv venv
-
-# 2. 활성화 (Windows)
-.\venv\Scripts\activate
-
-# 3. 의존성 설치
-pip install -r requirements.txt
-
-# 4. 환경변수 설정
-copy .env.example .env
-# .env 내용 수정
+# DB 테이블 생성 및 카드 데이터 주입
+python scripts/seed_db.py
 ```
+
+## 3. 보안 가이드라인
+*   **API Key:** 클라이언트(브라우저)에 노출되지 않도록 서버 사이드에서만 사용합니다.
+*   **Shuffle:** Python의 기본 `random` 모듈 대신 암호학적으로 안전한 `secrets` 모듈을 사용합니다.
+*   **Error Handling:** 프로덕션 모드(`DEBUG=False`)에서는 상세 에러 스택 트레이스를 노출하지 않습니다.

@@ -1,79 +1,9 @@
-# 🔮 PyTarot: AI 타로 리딩 플랫폼 시스템 설계서
-
-## 📋 1. 프로젝트 개요 (Project Overview)
-Python 기반 AI 타로 리딩 시스템으로, **FastAPI**와 **생성형 AI(LLM)**를 결합하여 사용자에게 개인화된 운세 상담 서비스를 제공합니다.
-
-### 핵심 목표
-- 사용자 질문 입력 → 타로 카드 선택(암호학적 셔플) → AI 개인화 해석 제공
-- 단순 랜덤을 넘어서는 맥락 기반의 자연어 해석 서비스
-
----
-
-## 🛠️ 2. 기술 스택 (Technology Stack)
-- **Backend:** FastAPI, LangChain, OpenAI/Gemini API
-- **Database:** PostgreSQL, SQLAlchemy (ORM)
-- **Frontend:** React.js / Flutter (또는 Streamlit/NiceGUI 프로토타이핑)
-- **Infrastructure:** Docker, Nginx, Redis (Caching/Session)
-- **Libraries:** secrets (난수), Pillow (이미지 처리), Pydantic V2 (검증)
-
----
-
-## 🏗️ 3. 시스템 아키텍처 (System Architecture)
-- **Client Layer:** 사용자 인터페이스 및 결과 시각화
-- **API Gateway:** 인증 및 Rate Limiting
-- **Service Layer:** 
-    - `Deck Service`: 셔플 및 드로우 로직
-    - `Interpretation Service`: LLM 프롬프트 엔지니어링 및 스트리밍 해석
-    - `User Service`: 사용자 및 기록 관리
-- **Data Layer:** PostgreSQL (RDBMS) 및 S3/Local 이미지 저장소
-
----
-
-## ⚙️ 4. 핵심 로직 (Core Logic)
-### 4.1 암호학적 셔플 (Cryptographic Shuffle)
-`secrets` 모듈을 활용하여 예측 불가능한 Fisher-Yates 셔플 알고리즘을 구현, 운세의 '진정성' 확보.
-
-### 4.2 스프레드 시스템 (Spread System)
-좌표 기반(Coordinate System)으로 설계되어 새로운 배열법(원카드, 쓰리카드, 켈틱 크로스 등)을 유연하게 확장 가능.
-
-### 4.3 AI 프롬프트 엔지니어링 (AI Prompt Engineering)
-LangChain을 활용하여 전문 타로 리더의 페르소나를 주입하고, SSE(Server-Sent Events)를 통해 실시간 스트리밍 답변 제공.
-
----
-
-## 🗄️ 5. 데이터베이스 설계 (Database Design)
-- **Users:** 회원 정보 및 점성술 데이터
-- **TarotCards:** 78장 카드 메타데이터 (키워드, 이미지, 상징 등)
-- **Readings:** 리딩 세션 메인 기록 (질문, AI 요약)
-- **ReadingDetails:** 세션별 선택된 카드 및 위치 정보
-
----
-
-## 🔌 6. 주요 API 엔드포인트
-- `POST /api/reading/shuffle`: 셔플된 세션 생성
-- `POST /api/reading/draw`: 카드 선택 및 정보 반환
-- `POST /api/reading/interpret/stream`: AI 실시간 해석 스트리밍
-- `GET /api/history/{user_id}`: 과거 리딩 기록 조회
-
----
-
-## 🚀 7. 개발 로드맵 (Roadmap)
-1. **1단계 (기반 구축):** 데이터셋(JSON) 및 DB 연동 (2주)
-2. **2단계 (코어 로직):** 셔플 엔진 및 스프레드 시스템 개발 (2주)
-3. **3단계 (AI 연동):** LangChain 파이프라인 및 스트리밍 구현 (3주)
-4. **4단계 (클라이언트):** 웹/앱 UI 개발 및 UX 최적화 (4주)
-5. **5단계 (배포):** Docker/Cloud 인프라 구축 (2주)
-
----
-
-## 📂 현재 프로젝트 상태 (Current Status)
-- **버전:** v0.1v (사용자 결정에 따라 업데이트)
+# 📂 현재 프로젝트 상태 (Current Status)
+- **버전:** v0.2.1
 - **날짜:** 2026년 1월 5일
 - **진행 상황:** 
-    - `README.md` 및 `GEMINI.md` 기반 구축 완료
-    - 개발 문서 세트(01~09) 작성 완료
-    - 초기 폴더 구조 생성 완료
-    - 타로 카드 이미지 자산(78장 + 뒷면) `static/cards/`에 배치 완료
+    - `v0.2.1` 백엔드 핵심 보강 완료 (DB 리포지토리, 스프레드 서비스).
+    - `Dev_md/10_Frontend_Design_and_UX.md` 작성으로 프론트엔드 고도화(Phase 4) 준비 완료.
     - **버전 관리 규칙:** 버전 업데이트는 사용자의 명시적 요청 시 진행함.
 
 ### 생성된 폴더 구조
@@ -90,6 +20,3 @@ C:\tarot\
 ├── Dev_md/           # 개발 문서 및 리포트 저장소
 └── tests/            # 테스트 코드
 ```
-
----
-*본 문서는 `Gemini Markup File Generation Report.html`을 바탕으로 생성된 프로젝트 가이드라인입니다.*
