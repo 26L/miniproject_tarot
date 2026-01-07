@@ -1,29 +1,57 @@
 # 🔮 PyTarot: AI-Powered Mystical Reading Platform
 
-![Version](https://img.shields.io/badge/version-v0.6-blueviolet) ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white) ![RAG](https://img.shields.io/badge/AI-RAG%20Enhanced-orange) 
+![Version](https://img.shields.io/badge/version-v0.6-blueviolet) ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white) ![RAG](https://img.shields.io/badge/AI-RAG%20Enhanced-orange)
 
 **PyTarot**은 현대적인 웹 기술과 생성형 AI, 그리고 신비주의적 전통을 결합한 차세대 타로 리딩 플랫폼입니다.
 단순한 운세 뽑기를 넘어, **RAG(검색 증강 생성)** 기술을 통해 검증된 타로 지식을 바탕으로 AI가 심도 있는 해석을 제공합니다.
 
 ---
 
-## ✨ Key Features (주요 기능)
+## 🔑 Key Features & Core Technology
 
-### 🧠 1. RAG 기반 AI 해석 (Knowledge-Enhanced AI)
-*   **Vector Database:** ChromaDB와 Google Embeddings를 활용하여 78장 카드의 상징, 원소, 수비학적 의미를 벡터화하여 저장했습니다.
-*   **Context-Aware:** 사용자의 질문과 뽑은 카드의 맥락에 맞는 정확한 타로 지식을 실시간으로 검색하여 LLM에 주입합니다.
-*   **Storytelling:** LangChain을 통해 단순 키워드 나열이 아닌, 내담자와 대화하듯 흐르는 스토리텔링 해석을 제공합니다.
+### 🧠 1. AI & RAG (검색 증강 생성)
+*   **Knowledge Base:** 78장 카드의 정방향/역방향 의미, 원소, 수비학적 상징을 포함한 마크다운 지식 베이스를 구축했습니다.
+*   **Vector Search:** `ChromaDB`와 `Google Generative AI Embeddings`를 활용한 시멘틱 검색으로 질문에 가장 적합한 해석을 찾아냅니다.
+*   **Context-Aware Interpretation:** 사용자 질문과 카드의 의미를 결합하여 LangChain 파이프라인이 문맥에 맞는 해석을 생성합니다.
+*   **Real-time Streaming:** SSE(Server-Sent Events)를 통해 AI의 사고 과정을 실시간 타자기 효과로 전달하여 몰입감을 높입니다.
 
-### 🛡️ 2. 안전하고 공정한 셔플 (True Randomness)
-*   Python의 `secrets` 모듈(CSPRNG)을 사용하여 예측 불가능한 카드 섞기를 구현했습니다. 이는 디지털 타로의 진정성을 보장하는 핵심 기술입니다.
+### 🎲 2. True Randomness (진정성 있는 셔플)
+*   **CSPRNG:** Python 표준 `random` 대신 암호학적으로 안전한 `secrets` 모듈을 사용하여 예측 불가능한 결과를 보장합니다.
+*   **Fisher-Yates Shuffle:** 검증된 알고리즘을 통해 편향 없는 덱 셔플링을 구현했습니다.
+*   **Deck Management:** 세션별로 독립적인 덱 상태를 관리하며, 실제 카드 덱처럼 소진 로직(Deck Exhaustion)이 적용됩니다.
 
-### 🐳 3. 컨테이너화된 배포 (Docker Ready)
-*   **Easy Setup:** `docker-compose` 명령어 하나로 백엔드(FastAPI)와 데이터베이스(PostgreSQL)를 즉시 실행할 수 있습니다.
-*   **Microservices Ready:** 확장 가능한 아키텍처로 설계되었습니다.
+### 🏗️ 3. Robust Architecture (아키텍처)
+*   **Backend:** FastAPI (Async) 기반의 고성능 API 서버로 구축되었습니다.
+*   **Database:** PostgreSQL (Production) 및 SQLite (Dev)를 지원하며 SQLAlchemy ORM (Async)을 사용합니다.
+*   **Deployment:** Docker & Docker Compose를 이용한 컨테이너 기반 배포 환경을 완벽하게 지원합니다.
+*   **Frontend:** 무거운 프레임워크 없이 Vanilla JS와 CSS3 3D Transforms만으로 가볍고 화려한 UI를 구현했습니다.
 
-### 🎨 4. 몰입형 UI/UX
-*   **Mystical Atmosphere:** 반응형 다크 테마와 3D 카드 애니메이션(CSS3 Transforms)으로 신비로운 분위기를 연출합니다.
-*   **Real-time Streaming:** AI의 해석이 생성되는 과정을 SSE(Server-Sent Events)를 통해 실시간 타자기 효과로 보여줍니다.
+---
+
+## 📜 Development History (개발 일지 요약)
+
+### **Phase 1: Foundation (v0.1)**
+*   프로젝트 구조 설계 및 환경 설정 (`venv`, `requirements.txt`).
+*   기본 FastAPI 서버 및 SQLAlchemy 모델링 (`User`, `Reading`, `Card`).
+*   `secrets` 기반 셔플러 프로토타입 구현.
+
+### **Phase 2: Core Logic (v0.2)**
+*   **데이터 구축:** 78장 타로 데이터 JSON화 및 DB 시딩 스크립트 작성.
+*   **스프레드 엔진:** 원카드, 쓰리카드, 켈틱 크로스 등 다양한 배열법 설정(`spreads.json`) 및 로직 구현.
+*   **안정성:** 로깅 시스템(`Loguru`) 및 전역 예외 처리 핸들러 도입.
+
+### **Phase 3: AI Integration (v0.3 - v0.4)**
+*   **LangChain 연동:** Google Gemini / OpenAI API 통합.
+*   **프롬프트 엔지니어링:** 페르소나(신비로운 점술가) 설정 및 구조화된 출력 유도.
+*   **스트리밍 API:** `text/event-stream` 프로토콜을 이용한 실시간 응답 구현.
+
+### **Phase 4: Knowledge Enhancement (v0.5)**
+*   **RAG 시스템 도입:** 타로 전문 지식 데이터셋(`data/knowledge/`) 구축 및 벡터 DB 연동.
+*   **정확도 향상:** AI가 할루시네이션(거짓 정보) 없이 정확한 카드 상징을 인용하도록 개선.
+
+### **Phase 5: Deployment (v0.6 - Current)**
+*   **Containerization:** `Dockerfile` (Multi-stage build 최적화) 및 `docker-compose` 작성.
+*   **Documentation:** 전체 개발 문서(`Dev_md/`) 구조화 및 리포트 정리.
 
 ---
 
@@ -62,38 +90,6 @@ python scripts/seed_db.py
 # 3. 서버 실행
 uvicorn app.main:app --reload
 ```
-
----
-
-## 🏗️ System Architecture
-
-### Project Structure
-```
-C:\tarot/
-├── 🐳 docker-compose.yml     # 컨테이너 오케스트레이션
-├── 🐳 Dockerfile             # 백엔드 이미지 빌드 설정
-├── 📂 app/
-│   ├── 📂 core/              # 핵심 모듈 (Config, DB, RAG, Shuffler)
-│   ├── 📂 services/          # 비즈니스 로직 (Deck, Interpretation)
-│   ├── 📂 api/               # FastAPI 라우터
-│   └── 📂 models/            # SQLAlchemy 데이터 모델
-├── 📂 data/
-│   ├── 📂 knowledge/         # RAG용 타로 지식 베이스 (.md)
-│   └── tarot_cards.json      # 원본 데이터
-├── 📂 static/                # 프론트엔드 리소스 (HTML/CSS/JS)
-└── 📂 Dev_md/                # 프로젝트 개발 문서 (Planning, Design, Reports)
-```
-
-## 📅 Status (개발 현황)
-
-| Phase | Description | Status |
-| :--- | :--- | :---: |
-| **Phase 1** | 기초 프레임워크 및 데이터베이스 구축 | ✅ |
-| **Phase 2** | 핵심 로직(셔플, 스프레드) 및 API 구현 | ✅ |
-| **Phase 3** | LangChain 연동 및 AI 해석 엔진 구현 | ✅ |
-| **Phase 4** | 프론트엔드 UI/UX 및 통합 테스트 | ✅ |
-| **Phase 5** | **RAG 시스템 구축 (Knowledge Base)** | ✅ |
-| **Phase 6** | **Docker 컨테이너화 및 배포 준비** | ✅ |
 
 ---
 
