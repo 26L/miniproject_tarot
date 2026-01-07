@@ -7,7 +7,7 @@ import asyncio
 
 router = APIRouter()
 
-@router.post("/interpret/stream")
+@router.post("/stream")
 async def stream_interpretation(request: InterpretationRequest):
     """
     Streams the AI interpretation for the given reading session.
@@ -20,12 +20,11 @@ async def stream_interpretation(request: InterpretationRequest):
                 cards=request.selected_cards
             ):
                 # SSE format: data: <content>\n\n
-                data = json.dumps({"chunk": chunk}, ensure_ascii=False)
-                yield f"data: {data}\n\n"
-                # Small delay to simulate typing effect if LLM is too fast (optional) 
-                # await asyncio.sleep(0.01) 
+                # Directly send text chunk for frontend compatibility
+                yield f"data: {chunk}\n\n"
             
-            yield "data: {\"status\": \"done\"}\n\n"
+            # End signal (Optional, or just close stream)
+            yield "data: [DONE]\n\n"
         except Exception as e:
             err_msg = json.dumps({"error": str(e)}, ensure_ascii=False)
             yield f"data: {err_msg}\n\n"

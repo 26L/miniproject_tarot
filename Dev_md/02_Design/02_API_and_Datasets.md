@@ -62,14 +62,16 @@
 
 ---
 
-## 2. API 요청/응답 DTO (Request/Response Schemas)
+## 2. API 요청/응답 DTO (Request/Response Schemas) - v0.4
 
-### 2.1 세션 및 셔플 (Session & Shuffle)
+### 2.1 타로 리딩 생성 및 드로우 통합 (Reading & Draw)
 
-**Request: `POST /api/reading/shuffle`**
+**Request: `POST /api/v1/readings`**
 ```json
 {
-  "user_id": "UUID-STRING (Optional)" 
+  "question": "이번 프로젝트가 성공할까요?",
+  "spread_type": "three_card",
+  "user_id": "UUID-STRING (Optional)"
 }
 ```
 
@@ -77,89 +79,92 @@
 ```json
 {
   "session_id": "550e8400-e29b-41d4-a716-446655440000",
-  "status": "shuffled",
-  "created_at": "2026-01-05T14:30:00Z"
-}
-```
-
-### 2.2 카드 뽑기 (Draw Cards)
-
-**Request: `POST /api/reading/draw`**
-```json
-{
-  "session_id": "550e8400-e29b-41d4-a716-446655440000",
-  "spread_type": "three_card",
-  "question": "이번 프로젝트가 성공할까요?"
-}
-```
-
-**Response: `200 OK`**
-```json
-{
-  "session_id": "550e8400-e29b-41d4-a716-446655440000",
-  "spread_type": "three_card",
+  "spread_config": {
+    "id": "three_card",
+    "card_count": 3,
+    "positions": [{"index": 0, "meaning": "과거"}, ...]
+  },
   "cards": [
     {
-      "position_index": 0,
-      "card_id": 12,
+      "card_id": 1,
+      "name_kr": "광대",
       "is_reversed": false,
-      "name_kr": "매달린 남자",
-      "image_url": "..."
-    },
-    {
-      "position_index": 1,
-      "card_id": 5,
-      "is_reversed": true,
-      "name_kr": "교황",
-      "image_url": "..."
+      "position_meaning": "과거",
+      "image_url": "/static/cards/tarot_the_fool.png",
+      ...
     }
-    // ...
-  ]
+  ],
+  "created_at": "2026-01-06T..."
 }
 ```
 
-### 2.3 AI 해석 요청 (Interpretation)
+### 2.2 AI 해석 스트리밍 (Interpretation Stream)
 
-**Request: `POST /api/reading/interpret/stream`**
+**Request: `POST /api/v1/interpretations/stream`**
 ```json
 {
-  "session_id": "550e8400-e29b-41d4-a716-446655440000",
-  "question": "이번 프로젝트가 성공할까요?",
+  "session_id": "UUID",
+  "question": "질문 내용",
+  "spread_type": "three_card",
   "selected_cards": [ ... ] 
 }
 ```
 
 **Response: `200 OK (Event-Stream)`**
 ```text
-data: {"chunk": "카드들을 살펴보면, "}
-data: {"chunk": "현재 상황에서 잠시 멈춤이 필요해 보입니다. "}
-data: {"chunk": "매달린 남자는 새로운 관점을..."}
-...
-data: {"status": "done"}
+data: 오늘 당신의 운세는...
+data: 과거 위치의 카드는...
+data: [DONE]
 ```
 
 ---
 
-### 3. 스프레드 데이터 구조 (`config/spreads.json`)
+## 3. RAG 지식 데이터셋 명세 (Knowledge Dataset for RAG)
+
+RAG 엔진이 검색할 수 있도록 타로 카드별 상세 지식을 텍스트 파일로 구조화합니다.
+
+### 3.1 파일 구조 (`data/knowledge/`)
+카드 한 장당 하나의 Markdown(`.md`) 파일로 구성하여 관리 효율성과 검색 정확도를 높입니다.
+- 경로: `data/knowledge/{card_id}_{name_en}.md`
+- 예: `data/knowledge/01_the_fool.md`
+
+### 3.2 문서 템플릿
+```markdown
+# [타로 지식] {name_kr} ({name_en})
+
+## 기본 의미
+{description}
+
+## 상징성
+{element}, {suit}, {number}
+
+## 정방향 해석 (Upright Keywords)
+- {keywords.upright}
+
+## 역방향 해석 (Reversed Keywords)
+- {keywords.reversed}
+
+## 상세 해석 가이드
+- 금전운: ...
+- 연애운: ...
+```
+
+---
+
+### 4. 스프레드 데이터 구조 (`config/spreads.json`)
 ```json
 {
   "spreads": [
     {
+      "id": "one_card",
+      "name_kr": "원 카드",
+      ...
+    },
+    {
       "id": "three_card",
-      "name_kr": "쓰리 카드 (과거/현재/미래)",
-      "card_count": 3,
-      "positions": [
-        {"index": 0, "meaning": "과거 / 원인"},
-        {"index": 1, "meaning": "현재 / 상황"},
-        {"index": 2, "meaning": "미래 / 결과"}
-      ]
+      "name_kr": "쓰리 카드",
+      ...
     }
   ]
 }
 ```
-
-## 📊 3. API 요청/응답 예시
-
-- [ ] **Tarot Card JSON**: 78장 영문/한글 데이터, 키워드 매핑 필요.
-- [ ] **Spread Config JSON**: 기본 3종(원카드, 쓰리카드, 켈틱) 좌표 데이터 필요.
-- [ ] **DB Seed Script**: 초기 데이터 적재를 위한 Python 스크립트 필요.

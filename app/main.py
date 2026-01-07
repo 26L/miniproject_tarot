@@ -39,13 +39,13 @@ def get_application() -> FastAPI:
     _app.mount("/static", StaticFiles(directory="static"), name="static")
 
     # Include Routers
-    _app.include_router(readings.router, prefix="/api/reading", tags=["Reading"])
-    _app.include_router(interpretations.router, prefix="/api/reading", tags=["AI Interpretation"])
+    _app.include_router(readings.router, prefix="/api/v1/readings", tags=["Readings"])
+    _app.include_router(interpretations.router, prefix="/api/v1/interpretations", tags=["Interpretations"])
 
     @_app.get("/")
     async def root():
         logger.info("Root endpoint accessed")
-        return {"message": f"Welcome to {settings.PROJECT_NAME} API v0.2"}
+        return {"message": f"Welcome to {settings.PROJECT_NAME} API v0.3"}
 
     @_app.get("/health")
     async def health_check():

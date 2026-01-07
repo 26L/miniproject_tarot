@@ -15,3 +15,10 @@
 - **문서 업데이트:**
   - `GEMINI.md` 및 `README.md` 버전 v0.2로 상향.
   - `05_TODO_list.md` 최신화.
+
+## 2026-01-07
+### 🐳 Deployment (v0.6 Preparation)
+- **Dockerization:**
+  - `Dockerfile`: Python 3.11-slim 기반 이미지 빌드 설정 작성.
+  - `docker-compose.yml`: App + PostgreSQL 컨테이너 오케스트레이션 구성.
+  - `.dockerignore`: 불필요한 파일 제외 설정.
